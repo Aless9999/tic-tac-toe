@@ -14,19 +14,27 @@
  * limitations under the License.
  */
 
-package macnonline.java.tic_tac_toe.components;
-
-import macnonline.java.tic_tac_toe.model.GameTable;
+package macnonline.java.tic_tac_toe.model;
 
 /**
- * E
- *
  * @author macnonline
  */
-public class DataPrinter {
-    public void printMapping() {
+public class Cell {
+
+    private final int row;
+    private final int col;
+
+
+    public Cell(final int row, final int col) {
+        this.row = row;
+        this.col = col;
     }
 
-    public void printGameMap(final GameTable gameTable) {
+    public int getRow() {
+        return row;
+    }
+
+    public int getCol() {
+        return col;
     }
 }

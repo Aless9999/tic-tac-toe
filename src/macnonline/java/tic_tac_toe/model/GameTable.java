@@ -20,4 +20,22 @@ package macnonline.java.tic_tac_toe.model;
  * @author macnonline
  */
 public class GameTable {
+
+    private final char[][] table = {
+            {' ', ' ', ' '},
+            {' ', ' ', ' '},
+            {' ', ' ', ' '},
+    };
+
+    public boolean isEmpty(Cell cell) {
+        return table[cell.getCol()][cell.getRow()] == ' ';
+    }
+
+    public char getSign(final Cell cell) {
+        return table[cell.getCol()][cell.getRow()];
+    }
+
+    public void setSign(final Cell cell, final char sign) {
+        table[cell.getRow()][cell.getCol()] = sign;
+    }
 }
