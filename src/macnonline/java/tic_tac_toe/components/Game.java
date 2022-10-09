@@ -14,7 +14,9 @@
  * limitations under the License.
  */
 
-package macnonline.java.tic_tac_toe;
+package macnonline.java.tic_tac_toe.components;
+
+import macnonline.java.tic_tac_toe.model.GameTable;
 
 import java.util.Random;
 
@@ -42,23 +44,33 @@ public class Game {
 
         System.out.println("Start game");
         dataPrinter.printMapping();
+        final GameTable gameTable = new GameTable();
         if (new Random().nextBoolean()) {
             computerMove.makeMove();
-            dataPrinter.printGameMap();
+            dataPrinter.printGameMap(gameTable);
 
         }
         while (true) {
-            userMove.makeMove();
-            dataPrinter.printGameMap();
-            if (winnerVerifier.isWin()) {
+            userMove.makeMove(gameTable);
+            dataPrinter.printGameMap(gameTable);
+            if (winnerVerifier.isWin(gameTable)) {
                 System.out.println("User is win");
                 break;
-            } else if (drowVerifier.isDrow()) {
+            } else if (drowVerifier.isDrow(gameTable)) {
+                System.out.println(("Game is drow"));
+                break;
+            }
+            computerMove.makeMove();
+            dataPrinter.printGameMap(gameTable);
+            if (winnerVerifier.isWin(gameTable)) {
+                System.out.println("Computer is win");
+                break;
+            } else if (drowVerifier.isDrow(gameTable)) {
                 System.out.println(("Game is drow"));
                 break;
             }
 
-
         }
+        System.out.println("Game over");
     }
 }

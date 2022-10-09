@@ -14,13 +14,12 @@
  * limitations under the License.
  */
 
-package macnonline.java.tic_tac_toe;
+package macnonline.java.tic_tac_toe.components;
 
 /**
  * @author macnonline
  */
-public class DrowVerifier {
-    public boolean isDrow() {
-        return false;
+public class ComputerMove {
+    public void makeMove() {
     }
 }

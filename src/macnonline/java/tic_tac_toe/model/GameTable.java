@@ -14,12 +14,10 @@
  * limitations under the License.
  */
 
-package macnonline.java.tic_tac_toe;
+package macnonline.java.tic_tac_toe.model;
 
 /**
  * @author macnonline
  */
-public class UserMove {
-    public void makeMove() {
-    }
+public class GameTable {
 }

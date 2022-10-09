@@ -14,12 +14,15 @@
  * limitations under the License.
  */
 
-package macnonline.java.tic_tac_toe;
+package macnonline.java.tic_tac_toe.components;
+
+import macnonline.java.tic_tac_toe.model.GameTable;
 
 /**
  * @author macnonline
  */
-public class ComputerMove {
-    public void makeMove() {
+public class WinnerVerifier {
+    public boolean isWin(final GameTable gameTable) {
+        return false;
     }
 }
