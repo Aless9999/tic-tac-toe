@@ -24,53 +24,53 @@ import java.util.Random;
  * @author macnonline
  */
 public class Game {
-    private final DataPrinter dataPrinter;
-    private final ComputerMove computerMove;
-    private final UserMove userMove;
-    private final WinnerVerifier winnerVerifier;
-    private final DrowVerifier drowVerifier;
+	private final DataPrinter dataPrinter;
+	private final ComputerMove computerMove;
+	private final UserMove userMove;
+	private final WinnerVerifier winnerVerifier;
+	private final DrowVerifier drowVerifier;
 
-    public Game(final DataPrinter dataPrinter, final ComputerMove computerMove,
-                final UserMove userMove, final WinnerVerifier winnerVerifier,
-                final DrowVerifier drowVerifier) {
-        this.dataPrinter = dataPrinter;
-        this.computerMove = computerMove;
-        this.userMove = userMove;
-        this.winnerVerifier = winnerVerifier;
-        this.drowVerifier = drowVerifier;
-    }
+	public Game(final DataPrinter dataPrinter, final ComputerMove computerMove,
+				final UserMove userMove, final WinnerVerifier winnerVerifier,
+				final DrowVerifier drowVerifier) {
+		this.dataPrinter = dataPrinter;
+		this.computerMove = computerMove;
+		this.userMove = userMove;
+		this.winnerVerifier = winnerVerifier;
+		this.drowVerifier = drowVerifier;
+	}
 
-    public void play() {
+	public void play() {
 
-        System.out.println("Start game");
-        dataPrinter.printMapping();
-        final GameTable gameTable = new GameTable();
-        if (new Random().nextBoolean()) {
-            computerMove.makeMove();
-            dataPrinter.printGameMap(gameTable);
+		System.out.println("Start game");
+		dataPrinter.printMapping();
+		final GameTable gameTable = new GameTable();
+		if (new Random().nextBoolean()) {
+			computerMove.makeMove();
+			dataPrinter.printGameMap(gameTable);
 
-        }
-        while (true) {
-            userMove.makeMove(gameTable);
-            dataPrinter.printGameMap(gameTable);
-            if (winnerVerifier.isWin(gameTable)) {
-                System.out.println("User is win");
-                break;
-            } else if (drowVerifier.isDrow(gameTable)) {
-                System.out.println(("Game is drow"));
-                break;
-            }
-            computerMove.makeMove();
-            dataPrinter.printGameMap(gameTable);
-            if (winnerVerifier.isWin(gameTable)) {
-                System.out.println("Computer is win");
-                break;
-            } else if (drowVerifier.isDrow(gameTable)) {
-                System.out.println(("Game is drow"));
-                break;
-            }
+		}
+		while (true) {
+			userMove.makeMove(gameTable);
+			dataPrinter.printGameMap(gameTable);
+			if (winnerVerifier.isWin(gameTable)) {
+				System.out.println("User is win");
+				break;
+			} else if (drowVerifier.isDrow(gameTable)) {
+				System.out.println(("Game is drow"));
+				break;
+			}
+			computerMove.makeMove();
+			dataPrinter.printGameMap(gameTable);
+			if (winnerVerifier.isWin(gameTable)) {
+				System.out.println("Computer is win");
+				break;
+			} else if (drowVerifier.isDrow(gameTable)) {
+				System.out.println(("Game is drow"));
+				break;
+			}
 
-        }
-        System.out.println("Game over");
-    }
+		}
+		System.out.println("Game over");
+	}
 }
