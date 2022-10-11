@@ -16,31 +16,51 @@
 
 package macnonline.java.tic_tac_toe.components;
 
+import macnonline.java.tic_tac_toe.model.Cell;
 import macnonline.java.tic_tac_toe.model.GameTable;
+
+import java.util.Scanner;
 
 /**
  * @author macnonline
  */
 public class UserMove {
+
+    private final char[][] mapping = {
+            {'7', '8', '9'},
+            {'4', '5', '6'},
+            {'1', '2', '3'}
+    };
+
+
     public void makeMove(final GameTable gameTable) {
 
-//        while (true) {
-//            System.out.println("Please type number between 1 and 9:");
-//            Scanner scanner = new Scanner(System.in);
-//            int digitMove = scanner.nextInt();
-//            if (digitMove >= 1 && digitMove <= 9) {
-////                char move = Integer.toString(digitMove).charAt(0);
-////                gameTable.findNumberToCell(move);
-////                int k = gameTable.getIndex()[1];
-////                int l = gameTable.getIndex()[0];
-////                Cell cell = new Cell(k, l);
-////                if (gameTable.isEmpty(cell)) {
-////                    gameTable.setSign(cell, 'X');
-//                    break;
-////                }
-////            }
-////            System.out.println("Can't make a move, because the cell is not free! Try again!");
-//        }
+        while (true) {
+            System.out.println("Your move");
+            int index = new Scanner(System.in).nextInt();
+            if (index < 0 || index > 9) {
+                continue;
+            }
+            Cell cell = getIndexNumber(gameTable, index);
+            if (gameTable.isEmpty(cell)) {
+                gameTable.setSign(cell, 'X');
+                return;
+            } else {
+                System.out.println("Cell is not Epty");
+            }
+        }
     }
+
+    private Cell getIndexNumber(final GameTable gameTable, final int index) {
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (mapping[i][j] == Integer.toString(index).charAt(0)) {
+                    return new Cell(i, j);
+                }
+            }
+        }
+        return null;
+    }
+
+
 }
-//}

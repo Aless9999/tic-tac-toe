@@ -41,8 +41,8 @@ public class WinnerVerifier {
 
 
     private boolean isWinnerByDiagonalLeft(final GameTable gameTable, final char sign) {
-        if (gameTable.getSign(new Cell(2, 1)) == gameTable.getSign(new Cell(1, 1)) &&
-                gameTable.getSign(new Cell(1, 2)) == gameTable.getSign(new Cell(1, 1)) &&
+        if (gameTable.getSign(new Cell(0, 0)) == gameTable.getSign(new Cell(1, 1)) &&
+                gameTable.getSign(new Cell(2, 2)) == gameTable.getSign(new Cell(1, 1)) &&
                 gameTable.getSign(new Cell(1, 1)) == sign) {
             return true;
         }
@@ -53,8 +53,8 @@ public class WinnerVerifier {
 
     private boolean isWinnerByDiagonalRight(final GameTable gameTable, final char sign) {
 
-        if (gameTable.getSign(new Cell(0, 0)) == gameTable.getSign(new Cell(1, 1)) &&
-                gameTable.getSign(new Cell(2, 2)) == gameTable.getSign(new Cell(1, 1)) &&
+        if (gameTable.getSign(new Cell(2, 0)) == gameTable.getSign(new Cell(1, 1)) &&
+                gameTable.getSign(new Cell(0, 2)) == gameTable.getSign(new Cell(1, 1)) &&
                 gameTable.getSign(new Cell(1, 1)) == sign) {
             return true;
         }
