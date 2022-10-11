@@ -16,13 +16,23 @@
 
 package macnonline.java.tic_tac_toe.components;
 
+import macnonline.java.tic_tac_toe.model.Cell;
 import macnonline.java.tic_tac_toe.model.GameTable;
 
 /**
  * @author macnonline
  */
-public class DrowVerifier {
-    public boolean isDrow(final GameTable gameTable) {
-        return false;
+public class DrawVerifier {
+    public boolean isDraw(final GameTable gameTable) {
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (gameTable.isEmpty(new Cell(i, j))) {
+                    return false;
+                }
+
+            }
+        }
+        return true;
     }
+
 }

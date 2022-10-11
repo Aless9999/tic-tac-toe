@@ -26,11 +26,17 @@ public class GameTable {
     private final char[][] table = {
             {' ', ' ', ' '},
             {' ', ' ', ' '},
-            {' ', ' ', ' '},
+            {' ', ' ', ' '}
+
     };
 
+
+    public char[][] getTable() {
+        return table;
+    }
+
     public boolean isEmpty(Cell cell) {
-        return table[cell.getCol()][cell.getRow()] == ' ';
+        return table[cell.getRow()][cell.getCol()] == ' ';
     }
 
     public char getSign(final Cell cell) {
@@ -55,4 +61,7 @@ public class GameTable {
         sb.append('}');
         return sb.toString();
     }
+
+
 }
+

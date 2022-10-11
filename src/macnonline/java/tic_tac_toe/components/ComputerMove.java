@@ -16,10 +16,31 @@
 
 package macnonline.java.tic_tac_toe.components;
 
+import macnonline.java.tic_tac_toe.model.Cell;
+import macnonline.java.tic_tac_toe.model.GameTable;
+
+import java.util.Random;
+
 /**
  * @author macnonline
  */
 public class ComputerMove {
-    public void makeMove() {
+
+    public void makeMove(GameTable gameTable) {
+        Random random = new Random();
+        while (true) {
+            final int row = random.nextInt(3);
+            final int col = random.nextInt(3);
+            Cell cell = new Cell(row, col);
+            if (gameTable.isEmpty(cell)) {
+                gameTable.setSign(cell, 'O');
+                return;
+            }
+        }
     }
 }
+
+
+
+
+

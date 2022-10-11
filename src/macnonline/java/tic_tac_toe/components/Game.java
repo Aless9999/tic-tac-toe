@@ -28,45 +28,46 @@ public class Game {
 	private final ComputerMove computerMove;
 	private final UserMove userMove;
 	private final WinnerVerifier winnerVerifier;
-	private final DrowVerifier drowVerifier;
+	private final DrawVerifier drawVerifier;
 
 	public Game(final DataPrinter dataPrinter, final ComputerMove computerMove,
 				final UserMove userMove, final WinnerVerifier winnerVerifier,
-				final DrowVerifier drowVerifier) {
+				final DrawVerifier drawVerifier) {
 		this.dataPrinter = dataPrinter;
 		this.computerMove = computerMove;
 		this.userMove = userMove;
 		this.winnerVerifier = winnerVerifier;
-		this.drowVerifier = drowVerifier;
+		this.drawVerifier = drawVerifier;
 	}
 
 	public void play() {
 
-		System.out.println("Start game");
+		System.out.println("Use the following mapping table to specify a cell using numbers from 1 to 9:");
 		dataPrinter.printMapping();
 		final GameTable gameTable = new GameTable();
+
 		if (new Random().nextBoolean()) {
-			computerMove.makeMove();
+			computerMove.makeMove(gameTable);
 			dataPrinter.printGameMap(gameTable);
 
 		}
 		while (true) {
 			userMove.makeMove(gameTable);
 			dataPrinter.printGameMap(gameTable);
-			if (winnerVerifier.isWin(gameTable)) {
+			if (winnerVerifier.isUserWin(gameTable)) {
 				System.out.println("User is win");
 				break;
-			} else if (drowVerifier.isDrow(gameTable)) {
-				System.out.println(("Game is drow"));
+			} else if (drawVerifier.isDraw(gameTable)) {
+				System.out.println(("Game is draw"));
 				break;
 			}
-			computerMove.makeMove();
+			computerMove.makeMove(gameTable);
 			dataPrinter.printGameMap(gameTable);
-			if (winnerVerifier.isWin(gameTable)) {
+			if (winnerVerifier.isComputerWin(gameTable)) {
 				System.out.println("Computer is win");
 				break;
-			} else if (drowVerifier.isDrow(gameTable)) {
-				System.out.println(("Game is drow"));
+			} else if (drawVerifier.isDraw(gameTable)) {
+				System.out.println(("Game is draw"));
 				break;
 			}
 

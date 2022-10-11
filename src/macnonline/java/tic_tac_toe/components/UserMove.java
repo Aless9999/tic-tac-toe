@@ -23,5 +23,24 @@ import macnonline.java.tic_tac_toe.model.GameTable;
  */
 public class UserMove {
     public void makeMove(final GameTable gameTable) {
+
+//        while (true) {
+//            System.out.println("Please type number between 1 and 9:");
+//            Scanner scanner = new Scanner(System.in);
+//            int digitMove = scanner.nextInt();
+//            if (digitMove >= 1 && digitMove <= 9) {
+////                char move = Integer.toString(digitMove).charAt(0);
+////                gameTable.findNumberToCell(move);
+////                int k = gameTable.getIndex()[1];
+////                int l = gameTable.getIndex()[0];
+////                Cell cell = new Cell(k, l);
+////                if (gameTable.isEmpty(cell)) {
+////                    gameTable.setSign(cell, 'X');
+//                    break;
+////                }
+////            }
+////            System.out.println("Can't make a move, because the cell is not free! Try again!");
+//        }
     }
 }
+//}
