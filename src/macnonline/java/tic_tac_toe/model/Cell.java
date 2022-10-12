@@ -25,7 +25,7 @@ public class Cell {
     private final int col;
 
 
-    public Cell(final int col, final int row) {
+    public Cell(final int row, final int col) {
         this.row = row;
         this.col = col;
     }

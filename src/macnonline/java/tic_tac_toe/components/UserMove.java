@@ -25,13 +25,11 @@ import java.util.Scanner;
  * @author macnonline
  */
 public class UserMove {
+    private final CellNumberConverter cellNumberConverter;
 
-    private final char[][] mapping = {
-            {'7', '8', '9'},
-            {'4', '5', '6'},
-            {'1', '2', '3'}
-    };
-
+    public UserMove(final CellNumberConverter cellNumberConverter) {
+        this.cellNumberConverter = cellNumberConverter;
+    }
 
     public void makeMove(final GameTable gameTable) {
 
@@ -52,15 +50,10 @@ public class UserMove {
     }
 
     private Cell getIndexNumber(final GameTable gameTable, final int index) {
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                if (mapping[i][j] == Integer.toString(index).charAt(0)) {
-                    return new Cell(i, j);
-                }
-            }
-        }
-        return null;
+
+        return cellNumberConverter.toCell(index);
     }
 
-
 }
+
+

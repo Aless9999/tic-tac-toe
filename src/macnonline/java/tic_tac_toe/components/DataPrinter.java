@@ -25,22 +25,32 @@ import macnonline.java.tic_tac_toe.model.GameTable;
  * @author macnonline
  */
 public class DataPrinter {
+    CellNumberConverter cellNumberConverter;
+
+    public DataPrinter(final CellNumberConverter cellNumberConverter) {
+        this.cellNumberConverter = cellNumberConverter;
+    }
+
     public void printMapping() {
-        System.out.println("-------------");
-        System.out.println("| 7 | 8 | 9 |");
-        System.out.println("-------------");
-        System.out.println("| 4 | 5 | 6 |");
-        System.out.println("-------------");
-        System.out.println("| 1 | 2 | 3 |");
+        for (int i = 0; i < 3; i++) {
+            System.out.println("-------------");
+            for (int j = 0; j < 3; j++) {
+                System.out.print("| " + cellNumberConverter.toNumber(new Cell(j, i)) + " ");
+
+            }
+            System.out.println("|");
+
+        }
         System.out.println("-------------");
     }
+
 
     public void printGameMap(final GameTable gameTable) {
 
         for (int i = 0; i < 3; i++) {
             System.out.println("-------------");
             for (int j = 0; j < 3; j++) {
-                System.out.print("| " + gameTable.getSign(new Cell(i, j)) + " ");
+                System.out.print("| " + gameTable.getSign(new Cell(j, i)) + " ");
 
             }
             System.out.println("|");

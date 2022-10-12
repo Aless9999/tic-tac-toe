@@ -23,7 +23,9 @@ import macnonline.java.tic_tac_toe.components.*;
  */
 public final class Launcher {
     public static void main(String[] args) {
-        Game game = new Game(new DataPrinter(), new ComputerMove(), new UserMove(),
+        final CellNumberConverter cellNumberConverter = new CellNumberConverter();
+        Game game = new Game(new DataPrinter(cellNumberConverter),
+                new ComputerMove(), new UserMove(cellNumberConverter),
                 new WinnerVerifier(), new DrawVerifier());
         game.play();
     }

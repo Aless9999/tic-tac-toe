@@ -17,26 +17,33 @@
 package macnonline.java.tic_tac_toe.components;
 
 import macnonline.java.tic_tac_toe.model.Cell;
-import macnonline.java.tic_tac_toe.model.GameTable;
 
 /**
  * @author macnonline
  */
-public class DrawVerifier {
+public class CellNumberConverter {
 
-    public boolean isDraw(final GameTable gameTable) {
-        WinnerVerifier winnerVerifier = new WinnerVerifier();
-        if (!winnerVerifier.isUserWin(gameTable) && !winnerVerifier.isComputerWin(gameTable)) {
-            for (int i = 0; i < 3; i++) {
-                for (int j = 0; j < 3; j++) {
-                    if (gameTable.isEmpty(new Cell(i, j))) {
-                        return false;
-                    }
+
+    private final char[][] mapping = {
+            {'7', '8', '9'},
+            {'4', '5', '6'},
+            {'1', '2', '3'}
+    };
+
+    Cell toCell(final int index) {
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (mapping[i][j] == Integer.toString(index).charAt(0)) {
+                    ;
+                    return new Cell(j, i);
                 }
             }
-        } else {
-            return false;
         }
-        return true;
+        return null;
     }
+
+    char toNumber(Cell cell) {
+        return mapping[cell.getRow()][cell.getCol()];
+    }
+
 }
