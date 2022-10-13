@@ -32,17 +32,11 @@ public class TerminalNumericKeypadCellNumberConverter implements CellNumberConve
 
     @Override
     public Cell toCell(final int index) {
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                if (mapping[i][j] == Integer.toString(index).charAt(0)) {
-                    return new Cell(i, j);
-                }
 
-            }
 
-        }
-        return null;
+        return new Cell((index - 1) / 3, (index - 1) % 3);
     }
+
 
     @Override
     public char toNumber(final Cell cell) {
