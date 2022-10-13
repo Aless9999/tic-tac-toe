@@ -17,16 +17,20 @@
 package macnonline.java.tic_tac_toe;
 
 import macnonline.java.tic_tac_toe.components.*;
+import macnonline.java.tic_tac_toe.keypad.TerminalNumericKeypadCellNumberConverter;
 
 /**
  * @author macnonline
  */
 public final class Launcher {
     public static void main(String[] args) {
-        final CellNumberConverter cellNumberConverter = new CellNumberConverter();
-        Game game = new Game(new DataPrinter(cellNumberConverter),
-                new ComputerMove(), new UserMove(cellNumberConverter),
-                new WinnerVerifier(), new DrawVerifier());
+        final CellNumberConverter cellNumberConverter = new TerminalNumericKeypadCellNumberConverter();
+
+
+        final Game game = new Game(
+                new DataPrinter(cellNumberConverter), new ComputerMove(),
+                new UserMove(cellNumberConverter), new WinnerVerifier(), new DrawVerifier()
+        );
         game.play();
     }
 }

@@ -39,17 +39,17 @@ public class UserMove {
             if (index < 0 || index > 9) {
                 continue;
             }
-            Cell cell = getIndexNumber(gameTable, index);
+            Cell cell = getIndexNumber(index);
             if (gameTable.isEmpty(cell)) {
                 gameTable.setSign(cell, 'X');
                 return;
             } else {
-                System.out.println("Cell is not Epty");
+                System.out.println("Cell is not Empty");
             }
         }
     }
 
-    private Cell getIndexNumber(final GameTable gameTable, final int index) {
+    private Cell getIndexNumber(final int index) {
 
         return cellNumberConverter.toCell(index);
     }
