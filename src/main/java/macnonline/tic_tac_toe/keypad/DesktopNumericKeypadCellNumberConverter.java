@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-package macnonline.java.tic_tac_toe.keypad;
+package macnonline.tic_tac_toe.keypad;
 
-import macnonline.java.tic_tac_toe.components.CellNumberConverter;
-import macnonline.java.tic_tac_toe.model.Cell;
+import macnonline.tic_tac_toe.components.CellNumberConverter;
+import macnonline.tic_tac_toe.model.Cell;
 
 /**
  * @author macnonline

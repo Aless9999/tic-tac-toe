@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package macnonline.java.tic_tac_toe.model;
+package macnonline.tic_tac_toe.model;
 
 import java.util.Arrays;
 

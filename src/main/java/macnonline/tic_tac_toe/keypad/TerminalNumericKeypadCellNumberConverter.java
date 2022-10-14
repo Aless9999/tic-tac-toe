@@ -14,33 +14,32 @@
  * limitations under the License.
  */
 
-package macnonline.java.tic_tac_toe.components;
+package macnonline.tic_tac_toe.keypad;
 
-import macnonline.java.tic_tac_toe.model.Cell;
-import macnonline.java.tic_tac_toe.model.GameTable;
-
-import java.util.Random;
+import macnonline.tic_tac_toe.components.CellNumberConverter;
+import macnonline.tic_tac_toe.model.Cell;
 
 /**
  * @author macnonline
  */
-public class ComputerMove {
+public class TerminalNumericKeypadCellNumberConverter implements CellNumberConverter {
 
-    public void makeMove(GameTable gameTable) {
-        Random random = new Random();
-        while (true) {
-            final int row = random.nextInt(3);
-            final int col = random.nextInt(3);
-            Cell cell = new Cell(row, col);
-            if (gameTable.isEmpty(cell)) {
-                gameTable.setSign(cell, 'O');
-                return;
-            }
-        }
+    private final char[][] mapping = {
+            {'1', '2', '3'},
+            {'4', '5', '6'},
+            {'7', '8', '9'}
+    };
+
+    @Override
+    public Cell toCell(final int index) {
+
+
+        return new Cell((index - 1) / 3, (index - 1) % 3);
+    }
+
+
+    @Override
+    public char toNumber(final Cell cell) {
+        return mapping[cell.getRow()][cell.getCol()];
     }
 }
-
-
-
-
-

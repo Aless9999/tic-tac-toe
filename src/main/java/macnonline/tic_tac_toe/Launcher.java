@@ -14,35 +14,23 @@
  * limitations under the License.
  */
 
-package macnonline.java.tic_tac_toe.model;
+package macnonline.tic_tac_toe;
+
+import macnonline.tic_tac_toe.components.*;
+import macnonline.tic_tac_toe.keypad.TerminalNumericKeypadCellNumberConverter;
 
 /**
  * @author macnonline
  */
-public class Cell {
+public final class Launcher {
+    public static void main(String[] args) {
+        final CellNumberConverter cellNumberConverter = new TerminalNumericKeypadCellNumberConverter();
 
-    private final int row;
-    private final int col;
 
-
-    public Cell(final int row, final int col) {
-        this.row = row;
-        this.col = col;
-    }
-
-    public int getRow() {
-        return row;
-    }
-
-    public int getCol() {
-        return col;
-    }
-
-    @Override
-    public String toString() {
-        return "Cell{" +
-                "row=" + row +
-                ", col=" + col +
-                '}';
+        final Game game = new Game(
+                new DataPrinter(cellNumberConverter), new ComputerMove(),
+                new UserMove(cellNumberConverter), new WinnerVerifier(), new DrawVerifier()
+        );
+        game.play();
     }
 }

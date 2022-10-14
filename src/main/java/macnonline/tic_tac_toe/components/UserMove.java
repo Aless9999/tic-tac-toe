@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-package macnonline.java.tic_tac_toe.components;
+package macnonline.tic_tac_toe.components;
 
-import macnonline.java.tic_tac_toe.model.Cell;
-import macnonline.java.tic_tac_toe.model.GameTable;
+import macnonline.tic_tac_toe.model.Cell;
+import macnonline.tic_tac_toe.model.GameTable;
 
 import java.util.Scanner;
 
