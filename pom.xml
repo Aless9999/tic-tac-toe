@@ -119,6 +119,7 @@
                             </manifest>
                         </archive>
                     </configuration>
+
                 </plugin>
             </plugins>
         </pluginManagement>
