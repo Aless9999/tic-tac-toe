@@ -17,14 +17,14 @@
 package macnonline.tic_tac_toe;
 
 import macnonline.tic_tac_toe.components.*;
-import macnonline.tic_tac_toe.keypad.TerminalNumericKeypadCellNumberConverter;
+import macnonline.tic_tac_toe.keypad.DesktopNumericKeypadCellNumberConverter;
 
 /**
  * @author macnonline
  */
 public final class Launcher {
     public static void main(String[] args) {
-        final CellNumberConverter cellNumberConverter = new TerminalNumericKeypadCellNumberConverter();
+        final CellNumberConverter cellNumberConverter = new DesktopNumericKeypadCellNumberConverter();
 
 
         final Game game = new Game(
