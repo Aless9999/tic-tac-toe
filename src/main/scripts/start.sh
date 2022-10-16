@@ -21,3 +21,5 @@
 ########################################################################################################################
 
 java -jar ${project.build.finalName}.jar
+echo "Please enter to continue..."
+read -r test
