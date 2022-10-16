@@ -16,8 +16,8 @@
 ########################################################################################################################
 # The sh script to start the tic-tac-toe game for Unix systems                                                         #
 #                                                                                                                      #
-# @author devonline                                                                                                    #
-# @email  devonline.academy@gmail.com                                                                                  #
+# @author macnonline                                                                                                   #
+# @email  macnalessandra@gmail.com                                                                                  #
 ########################################################################################################################
 
 java -jar tic-tac-toe.jar
