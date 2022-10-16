@@ -136,6 +136,7 @@
                 <configuration>
                     <descriptors>
                         <descriptor>src/assembly/distribution-windows.xml</descriptor>
+                        <descriptor>src/assembly/distribution-linux.xml</descriptor>
                     </descriptors>
                 </configuration>
                 <executions>
