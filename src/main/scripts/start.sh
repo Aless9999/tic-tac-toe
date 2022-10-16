@@ -20,4 +20,4 @@
 # @email  macnalessandra@gmail.com                                                                                  #
 ########################################################################################################################
 
-java -jar tic-tac-toe.jar
+java -jar ${project.build.finalName}.jar
