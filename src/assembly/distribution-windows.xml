@@ -29,6 +29,7 @@
                 <include>LICENSE</include>
                 <include>NOTICE</include>
             </includes>
+            <filtered>true</filtered>
             <lineEnding>windows</lineEnding>
         </fileSet>
         <fileSet>
