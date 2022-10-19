@@ -137,6 +137,9 @@
                     <descriptors>
                         <descriptor>src/assembly/distribution-windows.xml</descriptor>
                         <descriptor>src/assembly/distribution-linux.xml</descriptor>
+                        <descriptor>src/assembly/distribution-linux-with-jre.xml</descriptor>
+                        <descriptor>src/assembly/distribution-macos-with-jre.xml</descriptor>
+
                     </descriptors>
                 </configuration>
                 <executions>
