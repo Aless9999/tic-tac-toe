@@ -41,7 +41,7 @@ public class UserMove {
             }
             Cell cell = getIndexNumber(index);
             if (gameTable.isEmpty(cell)) {
-                gameTable.setSign(cell, 'X');
+                gameTable.setSign(cell, Sign.X);
                 return;
             } else {
                 System.out.println("Cell is not Empty");

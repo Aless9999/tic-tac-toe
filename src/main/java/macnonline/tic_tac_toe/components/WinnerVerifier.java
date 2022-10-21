@@ -24,23 +24,23 @@ import macnonline.tic_tac_toe.model.GameTable;
  */
 public class WinnerVerifier {
     public boolean isUserWin(final GameTable gameTable) {
-        return isWinnerByRow(gameTable, 'X') ||
-                isWinnerByCol(gameTable, 'X') ||
-                isWinnerByDiagonalRight(gameTable, 'X') ||
-                isWinnerByDiagonalLeft(gameTable, 'X');
+        return isWinnerByRow(gameTable, Sign.X) ||
+                isWinnerByCol(gameTable, Sign.X) ||
+                isWinnerByDiagonalRight(gameTable, Sign.X) ||
+                isWinnerByDiagonalLeft(gameTable, Sign.X);
 
 
     }
 
     public boolean isComputerWin(final GameTable gameTable) {
-        return isWinnerByRow(gameTable, 'O') ||
-                isWinnerByCol(gameTable, 'O') ||
-                isWinnerByDiagonalRight(gameTable, 'O') ||
-                isWinnerByDiagonalLeft(gameTable, 'O');
+        return isWinnerByRow(gameTable, Sign.O) ||
+                isWinnerByCol(gameTable, Sign.O) ||
+                isWinnerByDiagonalRight(gameTable, Sign.O) ||
+                isWinnerByDiagonalLeft(gameTable, Sign.O);
     }
 
 
-    private boolean isWinnerByDiagonalLeft(final GameTable gameTable, final char sign) {
+    private boolean isWinnerByDiagonalLeft(final GameTable gameTable, final Sign sign) {
         if (gameTable.getSign(new Cell(0, 0)) == gameTable.getSign(new Cell(1, 1)) &&
                 gameTable.getSign(new Cell(2, 2)) == gameTable.getSign(new Cell(1, 1)) &&
                 gameTable.getSign(new Cell(1, 1)) == sign) {
@@ -51,7 +51,7 @@ public class WinnerVerifier {
         return false;
     }
 
-    private boolean isWinnerByDiagonalRight(final GameTable gameTable, final char sign) {
+    private boolean isWinnerByDiagonalRight(final GameTable gameTable, final Sign sign) {
 
         if (gameTable.getSign(new Cell(2, 0)) == gameTable.getSign(new Cell(1, 1)) &&
                 gameTable.getSign(new Cell(0, 2)) == gameTable.getSign(new Cell(1, 1)) &&
@@ -63,7 +63,7 @@ public class WinnerVerifier {
         return false;
     }
 
-    private boolean isWinnerByCol(final GameTable gameTable, final char sign) {
+    private boolean isWinnerByCol(final GameTable gameTable, final Sign sign) {
         for (int i = 0; i < 3; i++) {
             if (gameTable.getSign(new Cell(0, i)) == gameTable.getSign(new Cell(1, i)) &&
                     gameTable.getSign(new Cell(1, i)) == gameTable.getSign(new Cell(2, i)) &&
@@ -75,7 +75,7 @@ public class WinnerVerifier {
         return false;
     }
 
-    private boolean isWinnerByRow(final GameTable gameTable, final char sign) {
+    private boolean isWinnerByRow(final GameTable gameTable, final Sign sign) {
         for (int i = 0; i < 3; i++) {
             if (gameTable.getSign(new Cell(i, 0)) == gameTable.getSign(new Cell(i, 1)) &&
                     gameTable.getSign(new Cell(i, 1)) == gameTable.getSign(new Cell(i, 2)) &&

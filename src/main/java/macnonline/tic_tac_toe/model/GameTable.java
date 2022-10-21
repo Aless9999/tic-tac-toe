@@ -16,34 +16,37 @@
 
 package macnonline.tic_tac_toe.model;
 
+import macnonline.tic_tac_toe.components.Sign;
+
 import java.util.Arrays;
+
+import static macnonline.tic_tac_toe.components.Sign.EMPTY;
 
 /**
  * @author macnonline
  */
 public class GameTable {
 
-    private final char[][] table = {
-            {' ', ' ', ' '},
-            {' ', ' ', ' '},
-            {' ', ' ', ' '}
-
+    private final Sign[][] table = {
+            {EMPTY, EMPTY, EMPTY},
+            {EMPTY, EMPTY, EMPTY},
+            {EMPTY, EMPTY, EMPTY}
     };
 
 
-    public char[][] getTable() {
+    public Sign[][] getTable() {
         return table;
     }
 
     public boolean isEmpty(Cell cell) {
-        return table[cell.getRow()][cell.getCol()] == ' ';
+        return table[cell.getRow()][cell.getCol()] == EMPTY;
     }
 
-    public char getSign(final Cell cell) {
+    public Sign getSign(final Cell cell) {
         return table[cell.getRow()][cell.getCol()];
     }
 
-    public void setSign(final Cell cell, final char sign) {
+    public void setSign(final Cell cell, final Sign sign) {
 
         table[cell.getRow()][cell.getCol()] = sign;
     }
@@ -61,7 +64,5 @@ public class GameTable {
         sb.append('}');
         return sb.toString();
     }
-
-
 }
 
