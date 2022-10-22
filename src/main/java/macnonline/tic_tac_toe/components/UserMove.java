@@ -24,13 +24,14 @@ import java.util.Scanner;
 /**
  * @author macnonline
  */
-public class UserMove {
+public class UserMove implements Move {
     private final CellNumberConverter cellNumberConverter;
 
     public UserMove(final CellNumberConverter cellNumberConverter) {
         this.cellNumberConverter = cellNumberConverter;
     }
 
+    @Override
     public void makeMove(final GameTable gameTable) {
 
         while (true) {
@@ -53,6 +54,7 @@ public class UserMove {
 
         return cellNumberConverter.toCell(index);
     }
+
 
 }
 

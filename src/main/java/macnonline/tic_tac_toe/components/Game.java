@@ -51,23 +51,36 @@ public class Game {
             dataPrinter.printGameMap(gameTable);
 
         }
+        Move[] array = {userMove, computerMove};
+        boolean index = false;
         while (true) {
-            userMove.makeMove(gameTable);
-            dataPrinter.printGameMap(gameTable);
-            if (winnerVerifier.isUserWin(gameTable)) {
-                System.out.println("User is win");
-                break;
-            } else if (drawVerifier.isDraw(gameTable)) {
-                System.out.println(("Game is draw"));
-                break;
+
+            for (Move move : array) {
+                move.makeMove(gameTable);
+                dataPrinter.printGameMap(gameTable);
+                if (move instanceof UserMove) {
+                    if (winnerVerifier.isUserWin(gameTable)) {
+                        System.out.println("User is win");
+                        index = true;
+                        break;
+
+                    }
+
+                } else {
+                    if (winnerVerifier.isComputerWin(gameTable)) {
+                        System.out.println("Computer is win");
+                        index = true;
+                        break;
+                    }
+                }
+                if (drawVerifier.isDraw(gameTable)) {
+                    System.out.println(("Game is draw"));
+                    index = true;
+                    break;
+                }
+
             }
-            computerMove.makeMove(gameTable);
-            dataPrinter.printGameMap(gameTable);
-            if (winnerVerifier.isComputerWin(gameTable)) {
-                System.out.println("Computer is win");
-                break;
-            } else if (drawVerifier.isDraw(gameTable)) {
-                System.out.println(("Game is draw"));
+            if (index) {
                 break;
             }
 
