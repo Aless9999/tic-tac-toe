@@ -19,24 +19,19 @@ package macnonline.tic_tac_toe.components;
 import macnonline.tic_tac_toe.model.Cell;
 import macnonline.tic_tac_toe.model.GameTable;
 
+
 /**
  * @author macnonline
  */
 public class WinnerVerifier {
-    public boolean isUserWin(final GameTable gameTable) {
-        return isWinnerByRow(gameTable, Sign.X) ||
-                isWinnerByCol(gameTable, Sign.X) ||
-                isWinnerByDiagonalRight(gameTable, Sign.X) ||
-                isWinnerByDiagonalLeft(gameTable, Sign.X);
 
 
-    }
+    public boolean isWinner(final GameTable gameTable, Player player) {
+        return isWinnerByRow(gameTable, player.getSign()) ||
+                isWinnerByCol(gameTable, player.getSign()) ||
+                isWinnerByDiagonalRight(gameTable, player.getSign()) ||
+                isWinnerByDiagonalLeft(gameTable, player.getSign());
 
-    public boolean isComputerWin(final GameTable gameTable) {
-        return isWinnerByRow(gameTable, Sign.O) ||
-                isWinnerByCol(gameTable, Sign.O) ||
-                isWinnerByDiagonalRight(gameTable, Sign.O) ||
-                isWinnerByDiagonalLeft(gameTable, Sign.O);
     }
 
 

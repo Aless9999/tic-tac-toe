@@ -16,25 +16,30 @@
 
 package macnonline.tic_tac_toe.components;
 
-import macnonline.tic_tac_toe.model.Cell;
 import macnonline.tic_tac_toe.model.GameTable;
 
 /**
  * @author macnonline
  */
-public class DrawVerifier {
+public class Player {
 
-    public boolean isDraw(final GameTable gameTable) {
+    private final Move move;
+    private final Sign sign;
 
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                if (gameTable.isEmpty(new Cell(i, j))) {
-                    return false;
-                }
-            }
-        }
+    public Player(final Move move, final Sign sign) {
+        this.move = move;
+        this.sign = sign;
+    }
 
-        return true;
+    public Move getMove() {
+        return move;
+    }
+
+    public Sign getSign() {
+        return sign;
+    }
+
+    public void makeMove(final GameTable gameTable) {
+        move.makeMove(gameTable);
     }
 }
-

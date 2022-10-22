@@ -20,6 +20,9 @@ import macnonline.tic_tac_toe.model.GameTable;
 
 import java.util.Random;
 
+import static macnonline.tic_tac_toe.components.Sign.O;
+import static macnonline.tic_tac_toe.components.Sign.X;
+
 /**
  * @author macnonline
  */
@@ -51,40 +54,30 @@ public class Game {
             dataPrinter.printGameMap(gameTable);
 
         }
-        Move[] array = {userMove, computerMove};
-        boolean index = false;
+        final Player[] players = {new Player(userMove, X), new Player(computerMove, O)};
         while (true) {
 
-            for (Move move : array) {
-                move.makeMove(gameTable);
+            for (Player player : players) {
+                player.makeMove(gameTable);
                 dataPrinter.printGameMap(gameTable);
-                if (move instanceof UserMove) {
-                    if (winnerVerifier.isUserWin(gameTable)) {
-                        System.out.println("User is win");
-                        index = true;
-                        break;
 
-                    }
-
-                } else {
-                    if (winnerVerifier.isComputerWin(gameTable)) {
-                        System.out.println("Computer is win");
-                        index = true;
-                        break;
-                    }
+                if (winnerVerifier.isWinner(gameTable, player)) {
+                    System.out.println(player.getSign() + " WIN");
+                    System.out.println("Game over");
+                    return;
                 }
+
+
                 if (drawVerifier.isDraw(gameTable)) {
                     System.out.println(("Game is draw"));
-                    index = true;
-                    break;
+                    System.out.println("Game over");
+                    return;
                 }
 
             }
-            if (index) {
-                break;
-            }
+
 
         }
-        System.out.println("Game over");
     }
 }
+
