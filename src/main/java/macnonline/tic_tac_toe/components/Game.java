@@ -20,23 +20,25 @@ import macnonline.tic_tac_toe.model.GameTable;
 
 import java.util.Random;
 
-import static macnonline.tic_tac_toe.components.Sign.O;
-import static macnonline.tic_tac_toe.components.Sign.X;
-
 /**
  * @author macnonline
  */
 public class Game {
     private final DataPrinter dataPrinter;
+
+    private final Player player1;
+    private final Player player2;
     private final ComputerMove computerMove;
     private final UserMove userMove;
     private final WinnerVerifier winnerVerifier;
     private final DrawVerifier drawVerifier;
 
-    public Game(final DataPrinter dataPrinter, final ComputerMove computerMove,
-                final UserMove userMove, final WinnerVerifier winnerVerifier,
+    public Game(final DataPrinter dataPrinter, final Player player1, final Player player2,
+                final ComputerMove computerMove, final UserMove userMove, final WinnerVerifier winnerVerifier,
                 final DrawVerifier drawVerifier) {
         this.dataPrinter = dataPrinter;
+        this.player1 = player1;
+        this.player2 = player2;
         this.computerMove = computerMove;
         this.userMove = userMove;
         this.winnerVerifier = winnerVerifier;
@@ -50,11 +52,11 @@ public class Game {
         final GameTable gameTable = new GameTable();
 
         if (new Random().nextBoolean()) {
-            computerMove.makeMove(gameTable);
+            player2.makeMove(gameTable);
             dataPrinter.printGameMap(gameTable);
 
         }
-        final Player[] players = {new Player(userMove, X), new Player(computerMove, O)};
+        final Player[] players = {player1, player2};
         while (true) {
 
             for (Player player : players) {

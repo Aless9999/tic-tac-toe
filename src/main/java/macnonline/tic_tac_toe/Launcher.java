@@ -19,6 +19,9 @@ package macnonline.tic_tac_toe;
 import macnonline.tic_tac_toe.components.*;
 import macnonline.tic_tac_toe.keypad.DesktopNumericKeypadCellNumberConverter;
 
+import static macnonline.tic_tac_toe.components.Sign.O;
+import static macnonline.tic_tac_toe.components.Sign.X;
+
 /**
  * @author macnonline
  */
@@ -28,8 +31,13 @@ public final class Launcher {
 
 
         final Game game = new Game(
-                new DataPrinter(cellNumberConverter), new ComputerMove(),
-                new UserMove(cellNumberConverter), new WinnerVerifier(), new DrawVerifier()
+                new DataPrinter(cellNumberConverter),
+                new Player(new UserMove(cellNumberConverter), X),
+                new Player(new ComputerMove(), O),
+                new ComputerMove(),
+                new UserMove(cellNumberConverter),
+                new WinnerVerifier(),
+                new DrawVerifier()
         );
         game.play();
     }
