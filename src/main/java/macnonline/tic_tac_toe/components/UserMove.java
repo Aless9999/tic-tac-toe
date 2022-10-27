@@ -32,7 +32,7 @@ public class UserMove implements Move {
     }
 
     @Override
-    public void makeMove(final GameTable gameTable) {
+    public void makeMove(final GameTable gameTable, final Sign sign) {
 
         while (true) {
             System.out.println("Your move");
@@ -42,7 +42,7 @@ public class UserMove implements Move {
             }
             Cell cell = getIndexNumber(index);
             if (gameTable.isEmpty(cell)) {
-                gameTable.setSign(cell, Sign.X);
+                gameTable.setSign(cell, sign);
                 return;
             } else {
                 System.out.println("Cell is not Empty");

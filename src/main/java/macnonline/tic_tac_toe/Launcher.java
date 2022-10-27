@@ -16,29 +16,18 @@
 
 package macnonline.tic_tac_toe;
 
-import macnonline.tic_tac_toe.components.*;
-import macnonline.tic_tac_toe.keypad.DesktopNumericKeypadCellNumberConverter;
-
-import static macnonline.tic_tac_toe.components.Sign.O;
-import static macnonline.tic_tac_toe.components.Sign.X;
+import macnonline.tic_tac_toe.components.Game;
+import macnonline.tic_tac_toe.components.GameFactory;
 
 /**
  * @author macnonline
  */
 public final class Launcher {
     public static void main(String[] args) {
-        final CellNumberConverter cellNumberConverter = new DesktopNumericKeypadCellNumberConverter();
+        GameFactory gameFactory = new GameFactory(args);
+        Game game = (gameFactory.creat());
 
 
-        final Game game = new Game(
-                new DataPrinter(cellNumberConverter),
-                new Player(new UserMove(cellNumberConverter), X),
-                new Player(new ComputerMove(), O),
-                new ComputerMove(),
-                new UserMove(cellNumberConverter),
-                new WinnerVerifier(),
-                new DrawVerifier()
-        );
         game.play();
     }
 }

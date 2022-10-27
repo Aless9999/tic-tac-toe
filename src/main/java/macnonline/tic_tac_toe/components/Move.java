@@ -22,6 +22,6 @@ import macnonline.tic_tac_toe.model.GameTable;
  * @author macnonline
  */
 public interface Move {
-    void makeMove(final GameTable gameTable);
+    void makeMove(final GameTable gameTable, Sign sign);
 
 }

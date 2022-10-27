@@ -28,19 +28,16 @@ public class Game {
 
     private final Player player1;
     private final Player player2;
-    private final ComputerMove computerMove;
-    private final UserMove userMove;
+
     private final WinnerVerifier winnerVerifier;
     private final DrawVerifier drawVerifier;
 
     public Game(final DataPrinter dataPrinter, final Player player1, final Player player2,
-                final ComputerMove computerMove, final UserMove userMove, final WinnerVerifier winnerVerifier,
+                final WinnerVerifier winnerVerifier,
                 final DrawVerifier drawVerifier) {
         this.dataPrinter = dataPrinter;
         this.player1 = player1;
         this.player2 = player2;
-        this.computerMove = computerMove;
-        this.userMove = userMove;
         this.winnerVerifier = winnerVerifier;
         this.drawVerifier = drawVerifier;
     }
@@ -52,7 +49,7 @@ public class Game {
         final GameTable gameTable = new GameTable();
 
         if (new Random().nextBoolean()) {
-            player2.makeMove(gameTable);
+            player2.makeMove(gameTable, player2.getSign());
             dataPrinter.printGameMap(gameTable);
 
         }
@@ -60,7 +57,7 @@ public class Game {
         while (true) {
 
             for (Player player : players) {
-                player.makeMove(gameTable);
+                player.makeMove(gameTable, player.getSign());
                 dataPrinter.printGameMap(gameTable);
 
                 if (winnerVerifier.isWinner(gameTable, player)) {

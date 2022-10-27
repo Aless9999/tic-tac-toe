@@ -14,18 +14,9 @@
  * limitations under the License.
  */
 
-package macnonline.tic_tac_toe.components;
+package macnonline.tic_tac_toe.model;
 
-import macnonline.tic_tac_toe.model.Cell;
-
-/**
- * @author macnonline
- */
-public interface CellNumberConverter {
-
-    Cell toCell(final int index);
-
-
-    char toNumber(Cell cell);
-
+public enum PlayerType {
+    USER,
+    COMPUTER;
 }

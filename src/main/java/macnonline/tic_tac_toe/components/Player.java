@@ -39,7 +39,7 @@ public class Player {
         return sign;
     }
 
-    public void makeMove(final GameTable gameTable) {
-        move.makeMove(gameTable);
+    public void makeMove(final GameTable gameTable, final Sign sign) {
+        move.makeMove(gameTable, sign);
     }
 }
