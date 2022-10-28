@@ -22,6 +22,7 @@ import macnonline.tic_tac_toe.components.GameFactory;
 /**
  * @author macnonline
  */
+//a
 public final class Launcher {
     public static void main(String[] args) {
         GameFactory gameFactory = new GameFactory(args);
