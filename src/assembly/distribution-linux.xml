@@ -29,7 +29,6 @@
                 <include>LICENSE</include>
                 <include>NOTICE</include>
             </includes>
-            <filtered>true</filtered>
             <lineEnding>unix</lineEnding>
         </fileSet>
         <fileSet>
@@ -47,7 +46,6 @@
             </includes>
             <lineEnding>unix</lineEnding>
             <fileMode>755</fileMode>
-            <filtered>true</filtered>
         </fileSet>
     </fileSets>
 </assembly>

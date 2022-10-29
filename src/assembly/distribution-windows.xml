@@ -29,7 +29,6 @@
                 <include>LICENSE</include>
                 <include>NOTICE</include>
             </includes>
-            <filtered>true</filtered>
             <lineEnding>windows</lineEnding>
         </fileSet>
         <fileSet>
@@ -46,7 +45,6 @@
                 <include>*.cmd</include>
             </includes>
             <lineEnding>windows</lineEnding>
-            <filtered>true</filtered>
         </fileSet>
     </fileSets>
 </assembly>
