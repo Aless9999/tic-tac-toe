@@ -67,17 +67,14 @@
         <maven-project-info-reports-plugin.version>3.1.2</maven-project-info-reports-plugin.version>
 
         <!-- Maven additional plugins -->
-        <maven-assembly-plugin.version>3.3.0</maven-assembly-plugin.version>
+        <maven-assembly-plugin.version>3.4.2</maven-assembly-plugin.version>
         <proguard-maven-plugin.version>2.5.1</proguard-maven-plugin.version>
     </properties>
 
     <build>
         <finalName>tic-tac-toe</finalName>
         <pluginManagement>
-
-
             <plugins>
-
                 <!-- clean lifecycle -->
                 <plugin>
                     <artifactId>maven-clean-plugin</artifactId>
@@ -99,6 +96,13 @@
                 <plugin>
                     <artifactId>maven-jar-plugin</artifactId>
                     <version>${maven-jar-plugin.version}</version>
+                    <configuration>
+                        <archive>
+                            <manifest>
+                                <mainClass>macnonline.tic_tac_toe.Launcher</mainClass>
+                            </manifest>
+                        </archive>
+                    </configuration>
                 </plugin>
                 <plugin>
                     <artifactId>maven-install-plugin</artifactId>
@@ -117,64 +121,27 @@
                     <artifactId>maven-project-info-reports-plugin</artifactId>
                     <version>${maven-project-info-reports-plugin.version}</version>
                 </plugin>
-                <plugin>
-                    <artifactId>maven-jar-plugin</artifactId>
-                    <configuration>
-                        <archive>
-                            <manifest>
-                                <mainClass>macnonline.tic_tac_toe.Launcher</mainClass>
-                            </manifest>
-                        </archive>
-                    </configuration>
-
-                </plugin>
-
-
-                <plugin>
-                    <artifactId>maven-assembly-plugin</artifactId>
-                    <version>${maven-assembly-plugin.version}</version>
-                    <configuration>
-                        <descriptors>
-                            <descriptor>src/assembly/distribution-windows.xml</descriptor>
-                            <descriptor>src/assembly/distribution-linux.xml</descriptor>
-                            <descriptor>src/assembly/distribution-linux-with-jre.xml</descriptor>
-                            <descriptor>src/assembly/distribution-macos-with-jre.xml</descriptor>
-
-                        </descriptors>
-                    </configuration>
-                    <executions>
-                        <execution>
-                            <phase>package</phase>
-                            <goals>
-                                <goal>single</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-                </plugin>
-                <plugin>
-                    <groupId>com.github.wvengen</groupId>
-                    <artifactId>proguard-maven-plugin</artifactId>
-                    <version>${proguard-maven-plugin.version}</version>
-                    <executions>
-                        <execution>
-                            <phase>package</phase>
-                            <goals>
-                                <goal>proguard</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-                    <configuration>
-                        <obfuscate>true</obfuscate>
-                        <injar>${project.build.finalName}.jar</injar>
-                        <outjar>${project.build.finalName}-release.jar</outjar>
-                        <proguardInclude>${basedir}/proguard-rules.conf</proguardInclude>
-                        <libs>
-                            <lib>${java.home}/jmods/java.base.jmod</lib>
-
-                        </libs>
-                    </configuration>
-                </plugin>
             </plugins>
         </pluginManagement>
+        <plugins>
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>${maven-assembly-plugin.version}</version>
+                <configuration>
+                    <descriptors>
+                        <descriptor>src/assembly/testdistribution-linux.xml</descriptor>
+                    </descriptors>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>package</phase> <!-- bind to the packaging phase -->
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+
     </build>
 </project>
