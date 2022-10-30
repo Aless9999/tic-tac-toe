@@ -51,7 +51,7 @@
         </fileSet>
 
         <fileSet>
-            <directory>.tmp/jre-macos</directory>
+            <directory>.tmp/jre11-macos</directory>
             <outputDirectory>jre</outputDirectory>
         </fileSet>
 

@@ -51,21 +51,10 @@
             <filtered>true</filtered>
         </fileSet>
         <fileSet>
-            <directory>.tmp/jre-linux</directory>
+            <directory>.tmp/jre11-linux</directory>
             <outputDirectory>jre</outputDirectory>
-            <includes>
-                <include>bin/java</include>
-                <include>bin/keytool</include>
-            </includes>
-            <fileMode>755</fileMode>
+
         </fileSet>
-        <fileSet>
-            <directory>.tmp/jre-linux</directory>
-            <outputDirectory>jre</outputDirectory>
-            <excludes>
-                <exclude>bin/java</exclude>
-                <exclude>bin/keytool</exclude>
-            </excludes>
-        </fileSet>
+
     </fileSets>
 </assembly>
