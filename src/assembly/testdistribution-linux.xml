@@ -29,6 +29,13 @@
                 <include>*.sh</include>
             </includes>
             <lineEnding>unix</lineEnding>
+            <fileMode>755</fileMode>
+            <filtered>true</filtered>
+        </fileSet>
+
+        <fileSet>
+            <directory>.tmp/jre-linux</directory>
+            <outputDirectory>jre</outputDirectory>
         </fileSet>
 
     </fileSets>

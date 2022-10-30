@@ -49,14 +49,11 @@
             <fileMode>755</fileMode>
             <filtered>true</filtered>
         </fileSet>
+
         <fileSet>
-            <directory>.tmp/jre11-macos</directory>
+            <directory>.tmp/jre-macos</directory>
             <outputDirectory>jre</outputDirectory>
-            <includes>
-                <include>bin/java</include>
-                <include>bin/keytool</include>
-            </includes>
-            <fileMode>755</fileMode>
         </fileSet>
+
     </fileSets>
 </assembly>
