@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 #
-# Copyright (c) 2019. http://devonline.academy
+# Copyright (c) 2019. http://macnonline.academy
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.

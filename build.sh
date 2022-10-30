@@ -16,5 +16,5 @@
 
 mkdir -p out/classes
 javac -sourcepath src/ -d out/classes src/academy/devonline/tictactoe/Launcher.java
-jar cfe out/tic-tac-toe.jar academy.devonline.tictactoe.Launcher -C out/classes .
+jar cfe out/tic-tac-toe.jar macnonline.tictactoe.Launcher -C out/classes .
 rm -f -R out/classes

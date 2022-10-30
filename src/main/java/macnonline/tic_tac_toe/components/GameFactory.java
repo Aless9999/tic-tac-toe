@@ -45,8 +45,12 @@ public class GameFactory {
                 System.err.println("not supported " + arg);
             }
         }
+        if(playerType1==null){
+            this.playerType1=USER;
+            this.playerType2=COMPUTER;
+        }else{
         this.playerType1 = playerType1;
-        this.playerType2 = playerType2;
+        this.playerType2 = playerType2;}
 
 
     }
