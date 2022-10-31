@@ -24,7 +24,7 @@ import java.util.Random;
  * @author macnonline
  */
 public class Game {
-    private final DataPrinter dataPrinter;
+    private final DataPrinterImpl dataPrinter;
 
     private final Player player1;
     private final Player player2;
@@ -32,7 +32,7 @@ public class Game {
     private final WinnerVerifier winnerVerifier;
     private final DrawVerifier drawVerifier;
 
-    public Game(final DataPrinter dataPrinter, final Player player1, final Player player2,
+    public Game(final DataPrinterImpl dataPrinter, final Player player1, final Player player2,
                 final WinnerVerifier winnerVerifier,
                 final DrawVerifier drawVerifier) {
         this.dataPrinter = dataPrinter;
