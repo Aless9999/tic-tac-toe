@@ -2,15 +2,25 @@ package macnonline.tic_tac_toe.components.console;
 
 import macnonline.tic_tac_toe.components.CellNumberConverter;
 import macnonline.tic_tac_toe.components.DataPrinter;
-import macnonline.tic_tac_toe.components.DataPrinterImpl;
 import macnonline.tic_tac_toe.model.Cell;
 import macnonline.tic_tac_toe.model.GameTable;
 
 public class ConsoleDataPrinter implements DataPrinter {
     CellNumberConverter cellNumberConverter;
+    public ConsoleDataPrinter(final CellNumberConverter cellNumberConverter) {
+        this.cellNumberConverter = cellNumberConverter;}
+
+    public ConsoleDataPrinter() {
+            }
+
     @Override
-    public void printInfoMessage(String message) {
+    public void printInfoMessagePrintln(String message) {
         System.out.println(message);
+    }
+
+    @Override
+    public void printInfoMessagePrint(String message) {
+        System.out.print(message);
     }
 
     @Override

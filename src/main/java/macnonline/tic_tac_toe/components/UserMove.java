@@ -16,6 +16,7 @@
 
 package macnonline.tic_tac_toe.components;
 
+import macnonline.tic_tac_toe.components.console.ConsoleDataPrinter;
 import macnonline.tic_tac_toe.model.Cell;
 import macnonline.tic_tac_toe.model.GameTable;
 
@@ -26,6 +27,7 @@ import java.util.Scanner;
  */
 public class UserMove implements Move {
     private final CellNumberConverter cellNumberConverter;
+    DataPrinter dataPrinter = new ConsoleDataPrinter();
 
     public UserMove(final CellNumberConverter cellNumberConverter) {
         this.cellNumberConverter = cellNumberConverter;
@@ -35,7 +37,7 @@ public class UserMove implements Move {
     public void makeMove(final GameTable gameTable, final Sign sign) {
 
         while (true) {
-            System.out.println("Your move");
+            dataPrinter.printInfoMessagePrintln("Your move");
             int index = new Scanner(System.in).nextInt();
             if (index < 0 || index > 9) {
                 continue;
@@ -45,7 +47,7 @@ public class UserMove implements Move {
                 gameTable.setSign(cell, sign);
                 return;
             } else {
-                System.out.println("Cell is not Empty");
+                dataPrinter.printInfoMessagePrintln("Cell is not Empty");
             }
         }
     }

@@ -16,6 +16,7 @@
 
 package macnonline.tic_tac_toe.components;
 
+
 import macnonline.tic_tac_toe.model.GameTable;
 
 import java.util.Random;
@@ -24,7 +25,7 @@ import java.util.Random;
  * @author macnonline
  */
 public class Game {
-    private final DataPrinterImpl dataPrinter;
+    private final DataPrinter dataPrinter;
 
     private final Player player1;
     private final Player player2;
@@ -32,7 +33,7 @@ public class Game {
     private final WinnerVerifier winnerVerifier;
     private final DrawVerifier drawVerifier;
 
-    public Game(final DataPrinterImpl dataPrinter, final Player player1, final Player player2,
+    public Game(final DataPrinter dataPrinter, final Player player1, final Player player2,
                 final WinnerVerifier winnerVerifier,
                 final DrawVerifier drawVerifier) {
         this.dataPrinter = dataPrinter;
@@ -43,8 +44,7 @@ public class Game {
     }
 
     public void play() {
-
-        System.out.println("Use the following mapping table to specify a cell using numbers from 1 to 9:");
+        dataPrinter.printInfoMessagePrintln("Use the following mapping table to specify a cell using numbers from 1 to 9:");
         dataPrinter.printMapping();
         final GameTable gameTable = new GameTable();
 
@@ -61,21 +61,18 @@ public class Game {
                 dataPrinter.printGameMap(gameTable);
 
                 if (winnerVerifier.isWinner(gameTable, player)) {
-                    System.out.println(player.getSign() + " WIN");
-                    System.out.println("Game over");
+                    dataPrinter.printInfoMessagePrintln(player.getSign() + " WIN");
+                    dataPrinter.printInfoMessagePrintln("Game over");
                     return;
                 }
 
 
                 if (drawVerifier.isDraw(gameTable)) {
-                    System.out.println(("Game is draw"));
-                    System.out.println("Game over");
+                    dataPrinter.printInfoMessagePrintln(("Game is draw"));
+                    dataPrinter.printInfoMessagePrintln("Game over");
                     return;
                 }
-
             }
-
-
         }
     }
 }

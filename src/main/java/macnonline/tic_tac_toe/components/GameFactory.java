@@ -16,6 +16,7 @@
 
 package macnonline.tic_tac_toe.components;
 
+import macnonline.tic_tac_toe.components.console.ConsoleDataPrinter;
 import macnonline.tic_tac_toe.keypad.DesktopNumericKeypadCellNumberConverter;
 import macnonline.tic_tac_toe.model.PlayerType;
 
@@ -56,7 +57,7 @@ public class GameFactory {
 
 
         return new Game(
-                new DataPrinterImpl(cellNumberConverter),
+                new ConsoleDataPrinter(cellNumberConverter),
                 player1,
                 player2,
                 new WinnerVerifier(),

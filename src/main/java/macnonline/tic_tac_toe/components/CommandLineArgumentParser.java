@@ -1,11 +1,13 @@
 package macnonline.tic_tac_toe.components;
 
+import macnonline.tic_tac_toe.components.console.ConsoleDataPrinter;
 import macnonline.tic_tac_toe.model.PlayerType;
 
 import static macnonline.tic_tac_toe.model.PlayerType.COMPUTER;
 import static macnonline.tic_tac_toe.model.PlayerType.USER;
 
 public class CommandLineArgumentParser {
+    ConsoleDataPrinter consoleDataPrinter = new ConsoleDataPrinter();
 
     private final String[] args;
 
@@ -24,10 +26,10 @@ public class CommandLineArgumentParser {
                 } else if (playerType2 == null) {
                     playerType2 = macnonline.tic_tac_toe.model.PlayerType.valueOf((arg.toUpperCase()));
                 } else {
-                    System.err.println("not supported " + arg);
+                    consoleDataPrinter.printErrorMessage("not supported " + arg);
                 }
             } else {
-                System.err.println("not supported " + arg);
+                consoleDataPrinter.printErrorMessage("not supported " + arg);
             }
         }
         if (playerType1 == null) {
