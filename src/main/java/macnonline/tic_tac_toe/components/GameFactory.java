@@ -21,7 +21,6 @@ import macnonline.tic_tac_toe.model.PlayerType;
 
 import static macnonline.tic_tac_toe.components.Sign.O;
 import static macnonline.tic_tac_toe.components.Sign.X;
-import static macnonline.tic_tac_toe.model.PlayerType.COMPUTER;
 import static macnonline.tic_tac_toe.model.PlayerType.USER;
 
 public class GameFactory {
@@ -29,34 +28,19 @@ public class GameFactory {
     private final PlayerType playerType2;
 
     public GameFactory(String[] args) {
-        PlayerType playerType1 = null;
-        PlayerType playerType2 = null;
 
-        for (String arg : args) {
-            if (USER.name().equalsIgnoreCase(arg) || COMPUTER.name().equalsIgnoreCase(arg)) {
-                if (playerType1 == null) {
-                    playerType1 = PlayerType.valueOf(arg.toUpperCase());
-                } else if (playerType2 == null) {
-                    playerType2 = PlayerType.valueOf((arg.toUpperCase()));
-                } else {
-                    System.err.println("not supported " + arg);
-                }
-            } else {
-                System.err.println("not supported " + arg);
-            }
-        }
-        if(playerType1==null){
-            this.playerType1=USER;
-            this.playerType2=COMPUTER;
-        }else{
-        this.playerType1 = playerType1;
-        this.playerType2 = playerType2;}
+        final CommandLineArgumentParser.PlayerTypes playerTypes =
+                new CommandLineArgumentParser(args).parse();
+
+        this.playerType1 = playerTypes.getPlayerType1();
+        this.playerType2 = playerTypes.getPlayerType2();
 
 
     }
 
     public Game creat() {
-        final CellNumberConverter cellNumberConverter = new DesktopNumericKeypadCellNumberConverter();
+        final CellNumberConverter cellNumberConverter =
+                new DesktopNumericKeypadCellNumberConverter();
         final Player player1;
         final Player player2;
         if (playerType1 == USER) {
@@ -71,16 +55,16 @@ public class GameFactory {
         }
 
 
-        final Game game = new Game(
+        return new Game(
                 new DataPrinter(cellNumberConverter),
                 player1,
                 player2,
                 new WinnerVerifier(),
                 new DrawVerifier()
         );
-        return game;
     }
 }
+
 
 
 
