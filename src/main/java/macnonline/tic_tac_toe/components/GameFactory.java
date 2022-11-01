@@ -50,12 +50,12 @@ public class GameFactory {
         final Player player1;
         final Player player2;
         if (playerType1 == USER) {
-            player1 = new Player(new UserMove(userInputReader), X);
+            player1 = new Player(new UserMove(dataPrinter, userInputReader), X);
         } else {
             player1 = new Player(new ComputerMove(), X);
         }
         if (playerType2 == USER) {
-            player2 = new Player(new UserMove(userInputReader), O);
+            player2 = new Player(new UserMove(dataPrinter, userInputReader), O);
         } else {
             player2 = new Player(new ComputerMove(), O);
         }
