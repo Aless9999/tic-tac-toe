@@ -16,46 +16,26 @@
 
 package macnonline.tic_tac_toe.components;
 
-import macnonline.tic_tac_toe.components.console.ConsoleDataPrinter;
-import macnonline.tic_tac_toe.model.Cell;
 import macnonline.tic_tac_toe.model.GameTable;
-
-import java.util.Scanner;
 
 /**
  * @author macnonline
  */
 public class UserMove implements Move {
-    private final CellNumberConverter cellNumberConverter;
-    DataPrinter dataPrinter = new ConsoleDataPrinter();
 
-    public UserMove(final CellNumberConverter cellNumberConverter) {
-        this.cellNumberConverter = cellNumberConverter;
+    private final UserInputReader userInputReader;
+
+    public UserMove(UserInputReader userInputReader) {
+        this.userInputReader = userInputReader;
     }
 
     @Override
     public void makeMove(final GameTable gameTable, final Sign sign) {
 
-        while (true) {
-            dataPrinter.printInfoMessagePrintln("Your move");
-            int index = new Scanner(System.in).nextInt();
-            if (index < 0 || index > 9) {
-                continue;
-            }
-            Cell cell = getIndexNumber(index);
-            if (gameTable.isEmpty(cell)) {
-                gameTable.setSign(cell, sign);
-                return;
-            } else {
-                dataPrinter.printInfoMessagePrintln("Cell is not Empty");
-            }
-        }
+        userInputReader.inputUser(gameTable, sign);
     }
 
-    private Cell getIndexNumber(final int index) {
 
-        return cellNumberConverter.toCell(index);
-    }
 
 
 }

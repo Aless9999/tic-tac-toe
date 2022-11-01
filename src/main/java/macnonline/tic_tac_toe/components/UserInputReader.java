@@ -1,9 +1,10 @@
 package macnonline.tic_tac_toe.components;
 
-import macnonline.tic_tac_toe.model.Cell;
+import macnonline.tic_tac_toe.model.GameTable;
 
 public interface UserInputReader {
-    Cell getIndexNumber(final int index);
+     void inputUser(GameTable gameTable, Sign sign);
+
 
 }
 
