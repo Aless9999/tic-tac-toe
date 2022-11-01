@@ -16,8 +16,7 @@
 
 package macnonline.tic_tac_toe.components;
 
-import macnonline.tic_tac_toe.components.console.ConsoleDataPrinter;
-import macnonline.tic_tac_toe.components.console.ConsoleUserInputReader;
+import macnonline.tic_tac_toe.components.swing.GameWindow;
 import macnonline.tic_tac_toe.keypad.DesktopNumericKeypadCellNumberConverter;
 import macnonline.tic_tac_toe.model.PlayerType;
 
@@ -41,12 +40,13 @@ public class GameFactory {
     }
 
     public Game creat() {
+        final GameWindow gameWindow = new GameWindow();
         final CellNumberConverter cellNumberConverter =
                 new DesktopNumericKeypadCellNumberConverter();
-        final DataPrinter dataPrinter =
-                new ConsoleDataPrinter(cellNumberConverter);
-        final UserInputReader userInputReader =
-                new ConsoleUserInputReader(dataPrinter,cellNumberConverter);
+        final DataPrinter dataPrinter = gameWindow;
+//                new ConsoleDataPrinter(cellNumberConverter);
+        final UserInputReader userInputReader =gameWindow;
+//                new ConsoleUserInputReader(dataPrinter,cellNumberConverter);
         final Player player1;
         final Player player2;
         if (playerType1 == USER) {
