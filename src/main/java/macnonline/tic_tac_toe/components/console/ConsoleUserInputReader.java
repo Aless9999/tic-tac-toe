@@ -26,7 +26,7 @@ public class ConsoleUserInputReader implements UserInputReader {
         int index;
         while (true) {
 
-            dataPrinter.printInfoMessagePrintln("Your move");
+
             index = new Scanner(System.in).nextInt();
             if (index < 0 || index > 9) {
                 continue;
