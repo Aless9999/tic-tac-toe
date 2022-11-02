@@ -18,5 +18,5 @@ package macnonline.tic_tac_toe.components;
 
 public enum UserInterface {
     GUI,
-    CONSOLE;
+    CONSOLE
 }

@@ -38,7 +38,6 @@ public class UserMove implements Move {
 
         while (true) {
 
-            dataPrinter.printInfoMessagePrintln("Your move");
             Cell cell = userInputReader.getUserInput();
             if (gameTable.isEmpty(cell)) {
                 gameTable.setSign(cell, sign);

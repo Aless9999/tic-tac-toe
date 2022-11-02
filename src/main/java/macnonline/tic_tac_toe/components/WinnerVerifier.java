@@ -36,26 +36,16 @@ public class WinnerVerifier {
 
 
     private boolean isWinnerByDiagonalLeft(final GameTable gameTable, final Sign sign) {
-        if (gameTable.getSign(new Cell(0, 0)) == gameTable.getSign(new Cell(1, 1)) &&
+        return gameTable.getSign(new Cell(0, 0)) == gameTable.getSign(new Cell(1, 1)) &&
                 gameTable.getSign(new Cell(2, 2)) == gameTable.getSign(new Cell(1, 1)) &&
-                gameTable.getSign(new Cell(1, 1)) == sign) {
-            return true;
-        }
-
-
-        return false;
+                gameTable.getSign(new Cell(1, 1)) == sign;
     }
 
     private boolean isWinnerByDiagonalRight(final GameTable gameTable, final Sign sign) {
 
-        if (gameTable.getSign(new Cell(2, 0)) == gameTable.getSign(new Cell(1, 1)) &&
+        return gameTable.getSign(new Cell(2, 0)) == gameTable.getSign(new Cell(1, 1)) &&
                 gameTable.getSign(new Cell(0, 2)) == gameTable.getSign(new Cell(1, 1)) &&
-                gameTable.getSign(new Cell(1, 1)) == sign) {
-            return true;
-        }
-
-
-        return false;
+                gameTable.getSign(new Cell(1, 1)) == sign;
     }
 
     private boolean isWinnerByCol(final GameTable gameTable, final Sign sign) {
@@ -81,6 +71,7 @@ public class WinnerVerifier {
         }
         return false;
     }
+
 
 
 }

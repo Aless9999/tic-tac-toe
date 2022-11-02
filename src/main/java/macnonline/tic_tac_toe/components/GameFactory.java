@@ -24,9 +24,11 @@ import macnonline.tic_tac_toe.model.PlayerType;
 
 import static macnonline.tic_tac_toe.components.Sign.O;
 import static macnonline.tic_tac_toe.components.Sign.X;
+import static macnonline.tic_tac_toe.components.UserInterface.GUI;
 import static macnonline.tic_tac_toe.model.PlayerType.USER;
 
 public class GameFactory {
+    private final UserInterface userInterface;
     private final PlayerType playerType1;
     private final PlayerType playerType2;
 
@@ -35,20 +37,28 @@ public class GameFactory {
         final CommandLineArgumentParser.PlayerTypes playerTypes =
                 new CommandLineArgumentParser(args).parse();
 
+        this.userInterface = playerTypes.getUserInterface();
         this.playerType1 = playerTypes.getPlayerType1();
         this.playerType2 = playerTypes.getPlayerType2();
-
-
     }
 
     public Game creat() {
-//        final GameWindow gameWindow = new GameWindow();
+        if(userInterface==GUI){
+            final GameWindow gameWindow = new GameWindow();
+            return getGame(gameWindow, gameWindow);
+        }else{
         final CellNumberConverter cellNumberConverter =
                 new DesktopNumericKeypadCellNumberConverter();
         final DataPrinter dataPrinter =
                 new ConsoleDataPrinter(cellNumberConverter);
         final UserInputReader userInputReader =
                 new ConsoleUserInputReader(dataPrinter,cellNumberConverter);
+
+            return getGame(dataPrinter, userInputReader);
+        }
+}
+
+    private Game getGame(DataPrinter dataPrinter, UserInputReader userInputReader) {
         final Player player1;
         final Player player2;
         if (playerType1 == USER) {
