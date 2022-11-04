@@ -31,6 +31,7 @@ public class ConsoleDataPrinter implements DataPrinter {
     @Override
     public void printMapping() {
          print((i, j) -> String.valueOf(cellNumberConverter.toNumber(new Cell(i, j))));
+
     }
 
     @Override
