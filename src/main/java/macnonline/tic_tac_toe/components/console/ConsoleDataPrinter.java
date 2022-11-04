@@ -7,11 +7,20 @@ import macnonline.tic_tac_toe.model.GameTable;
 
 public class ConsoleDataPrinter implements DataPrinter {
     CellNumberConverter cellNumberConverter;
+
     public ConsoleDataPrinter(final CellNumberConverter cellNumberConverter) {
-        this.cellNumberConverter = cellNumberConverter;}
+        this.cellNumberConverter = cellNumberConverter;
+    }
 
     public ConsoleDataPrinter() {
-            }
+    }
+
+    @Override
+    public void printInstruction() {
+        printInfoMessagePrint("Use the following mapping table to specify a cell using numbers from 1 to 9:"
+        );
+        print((i, j) -> String.valueOf(cellNumberConverter.toNumber(new Cell(i, j))));
+    }
 
     @Override
     public void printInfoMessagePrintln(String message) {
@@ -28,16 +37,13 @@ public class ConsoleDataPrinter implements DataPrinter {
         System.err.println(message);
     }
 
-    @Override
-    public void printMapping() {
-         print((i, j) -> String.valueOf(cellNumberConverter.toNumber(new Cell(i, j))));
 
-    }
 
     @Override
     public void printGameMap(GameTable gameTable) {
         print((i, j) -> String.valueOf(gameTable.getSign(new Cell(i, j))));
     }
+
     public void print(final Lambda lambda) {
         for (int i = 0; i < 3; i++) {
             System.out.println("-------------");
@@ -50,6 +56,7 @@ public class ConsoleDataPrinter implements DataPrinter {
         }
         System.out.println("-------------");
     }
+
     @FunctionalInterface
     private interface Lambda {
 

@@ -25,6 +25,7 @@ import java.util.Random;
  * @author macnonline
  */
 public class Game {
+    private  final GameOverHandler gameOverHandler;
     private final DataPrinter dataPrinter;
 
     private final Player player1;
@@ -33,9 +34,10 @@ public class Game {
     private final WinnerVerifier winnerVerifier;
     private final DrawVerifier drawVerifier;
 
-    public Game(final DataPrinter dataPrinter, final Player player1, final Player player2,
+    public Game(GameOverHandler gameOverHandler, final DataPrinter dataPrinter, final Player player1, final Player player2,
                 final WinnerVerifier winnerVerifier,
                 final DrawVerifier drawVerifier) {
+        this.gameOverHandler = gameOverHandler;
         this.dataPrinter = dataPrinter;
         this.player1 = player1;
         this.player2 = player2;
@@ -44,8 +46,7 @@ public class Game {
     }
 
     public void play() {
-        dataPrinter.printInfoMessagePrintln("Use the following mapping table to specify a cell using numbers from 1 to 9:");
-        dataPrinter.printMapping();
+       dataPrinter.printInstruction();
         final GameTable gameTable = new GameTable();
 
         if (new Random().nextBoolean()) {
@@ -62,14 +63,14 @@ public class Game {
 
                 if (winnerVerifier.isWinner(gameTable, player)) {
                     dataPrinter.printInfoMessagePrintln(player.getSign() + " WIN");
-                    dataPrinter.printInfoMessagePrintln("Game over");
+                    gameOverHandler.gameOver();
                     return;
                 }
 
 
                 if (drawVerifier.isDraw(gameTable)) {
                     dataPrinter.printInfoMessagePrintln(("Game is draw"));
-                    dataPrinter.printInfoMessagePrintln("Game over");
+                    gameOverHandler.gameOver();
                     return;
                 }
             }

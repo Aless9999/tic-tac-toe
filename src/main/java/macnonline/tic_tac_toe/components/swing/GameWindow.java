@@ -1,6 +1,7 @@
 package macnonline.tic_tac_toe.components.swing;
 
 import macnonline.tic_tac_toe.components.DataPrinter;
+import macnonline.tic_tac_toe.components.GameOverHandler;
 import macnonline.tic_tac_toe.components.UserInputReader;
 import macnonline.tic_tac_toe.model.Cell;
 import macnonline.tic_tac_toe.model.GameTable;
@@ -10,7 +11,7 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public final class GameWindow extends JFrame implements DataPrinter, UserInputReader {
+public final class GameWindow extends JFrame implements DataPrinter, UserInputReader, GameOverHandler {
 
     private static final int GAME_TABLE_SIZE = 3;
 
@@ -74,6 +75,11 @@ public final class GameWindow extends JFrame implements DataPrinter, UserInputRe
     }
 
     @Override
+    public void printInstruction() {
+
+    }
+
+    @Override
     public void printInfoMessagePrintln(final String message) {
         JOptionPane.showMessageDialog(this, message, "Info", JOptionPane.INFORMATION_MESSAGE);
     }
@@ -88,10 +94,6 @@ public final class GameWindow extends JFrame implements DataPrinter, UserInputRe
         JOptionPane.showMessageDialog(this, message, "Error", JOptionPane.ERROR_MESSAGE);
     }
 
-    @Override
-    public void printMapping() {
-        // do nothing
-    }
 
     @Override
     public void printGameMap(final GameTable gameTable) {
@@ -113,5 +115,10 @@ public final class GameWindow extends JFrame implements DataPrinter, UserInputRe
             }
         }
         return clickedCell;
+    }
+
+    @Override
+    public void gameOver() {
+        System.exit(0);
     }
 }
