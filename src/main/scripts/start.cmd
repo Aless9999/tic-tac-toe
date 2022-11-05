@@ -1,5 +1,5 @@
- @rem
-@rem Copyright 2019. http://macnonline
+@rem
+@rem Copyright 2022. http://macnonline
 @rem
 @rem Licensed under the Apache License, Version 2.0 (the "License");
 @rem you may not use this file except in compliance with the License.
@@ -15,8 +15,8 @@
 @rem ###################################################################################################################
 @rem The cmd script to start the tic-tac-toe game for Windows systems
 @rem
-@rem @author devonline
-@rem @email  devonline.academy@gmail.com
+@rem @author macnonline
+@rem @email  macnalessandra@gmail.com
 @rem ###################################################################################################################
 @echo off
 @rem -------------------------------------------------------------------------------------------------------------------
