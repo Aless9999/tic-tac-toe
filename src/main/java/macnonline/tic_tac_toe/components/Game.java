@@ -69,10 +69,11 @@ public class Game {
 
 
                 if (drawVerifier.isDraw(gameTable)) {
-                    dataPrinter.printInfoMessagePrintln(("Game is draw"));
+                    dataPrinter.printInfoMessagePrintln(("GAME IS DRAW"));
                     gameOverHandler.gameOver();
                     return;
                 }
+
             }
         }
     }
