@@ -14,9 +14,32 @@
  *    limitations under the License.
  */
 
-package macnonline.tic_tac_toe.components;
+package macnonline.tic_tac_toe.model.game;
 
-public enum UserInterface {
-    GUI,
-    CONSOLE
+import macnonline.tic_tac_toe.components.Move;
+
+/**
+ * @author macnonline
+ */
+public class Player {
+
+    private final Move move;
+    private final Sign sign;
+
+    public Player(final Move move, final Sign sign) {
+        this.move = move;
+        this.sign = sign;
+    }
+
+    public Move getMove() {
+        return move;
+    }
+
+    public Sign getSign() {
+        return sign;
+    }
+
+    public void makeMove(final GameTable gameTable, final Sign sign) {
+        move.makeMove(gameTable, sign);
+    }
 }

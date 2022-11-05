@@ -14,35 +14,27 @@
  * limitations under the License.
  */
 
-package macnonline.tic_tac_toe.keypad;
+package macnonline.tic_tac_toe.components.console.keypad;
 
-import macnonline.tic_tac_toe.components.CellNumberConverter;
-import macnonline.tic_tac_toe.model.Cell;
+import macnonline.tic_tac_toe.components.console.CellNumberConverter;
+import macnonline.tic_tac_toe.model.game.Cell;
 
 /**
  * @author macnonline
  */
-public class DesktopNumericKeypadCellNumberConverter implements CellNumberConverter {
+public class TerminalNumericKeypadCellNumberConverter implements CellNumberConverter {
 
     private final char[][] mapping = {
-            {'7', '8', '9'},
+            {'1', '2', '3'},
             {'4', '5', '6'},
-            {'1', '2', '3'}
+            {'7', '8', '9'}
     };
 
     @Override
     public Cell toCell(final int index) {
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                if (mapping[i][j] == Integer.toString(index).charAt(0)) {
 
-                    return new Cell(i, j);
-                }
 
-            }
-
-        }
-        return null;
+        return new Cell((index - 1) / 3, (index - 1) % 3);
     }
 
 

@@ -1,9 +1,8 @@
 package macnonline.tic_tac_toe.components.console;
 
-import macnonline.tic_tac_toe.components.CellNumberConverter;
 import macnonline.tic_tac_toe.components.DataPrinter;
-import macnonline.tic_tac_toe.model.Cell;
-import macnonline.tic_tac_toe.model.GameTable;
+import macnonline.tic_tac_toe.model.game.Cell;
+import macnonline.tic_tac_toe.model.game.GameTable;
 
 public class ConsoleDataPrinter implements DataPrinter {
     CellNumberConverter cellNumberConverter;

@@ -17,7 +17,6 @@
 package macnonline.tic_tac_toe;
 
 import macnonline.tic_tac_toe.components.Game;
-import macnonline.tic_tac_toe.components.GameFactory;
 
 /**
  * @author macnonline

@@ -1,12 +1,29 @@
-package macnonline.tic_tac_toe.components;
+/*
+ * Copyright {2022} {macnonline}
+ *
+ *    Licensed under the Apache License, Version 2.0 (the "License");
+ *    you may not use this file except in compliance with the License.
+ *    You may obtain a copy of the License at
+ *
+ *        http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *    Unless required by applicable law or agreed to in writing, software
+ *    distributed under the License is distributed on an "AS IS" BASIS,
+ *    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *    See the License for the specific language governing permissions and
+ *    limitations under the License.
+ */
 
+package macnonline.tic_tac_toe.components.config;
+
+import macnonline.tic_tac_toe.model.config.UserInterface;
 import macnonline.tic_tac_toe.components.console.ConsoleDataPrinter;
-import macnonline.tic_tac_toe.model.PlayerType;
+import macnonline.tic_tac_toe.model.config.PlayerType;
 
-import static macnonline.tic_tac_toe.components.UserInterface.CONSOLE;
-import static macnonline.tic_tac_toe.components.UserInterface.GUI;
-import static macnonline.tic_tac_toe.model.PlayerType.COMPUTER;
-import static macnonline.tic_tac_toe.model.PlayerType.USER;
+import static macnonline.tic_tac_toe.model.config.UserInterface.CONSOLE;
+import static macnonline.tic_tac_toe.model.config.UserInterface.GUI;
+import static macnonline.tic_tac_toe.model.config.PlayerType.COMPUTER;
+import static macnonline.tic_tac_toe.model.config.PlayerType.USER;
 
 public class CommandLineArgumentParser {
     ConsoleDataPrinter consoleDataPrinter = new ConsoleDataPrinter();
@@ -24,9 +41,9 @@ public class CommandLineArgumentParser {
         for (String arg : args) {
             if (USER.name().equalsIgnoreCase(arg) || COMPUTER.name().equalsIgnoreCase(arg)) {
                 if (playerType1 == null) {
-                    playerType1 = macnonline.tic_tac_toe.model.PlayerType.valueOf(arg.toUpperCase());
+                    playerType1 = PlayerType.valueOf(arg.toUpperCase());
                 } else if (playerType2 == null) {
-                    playerType2 = macnonline.tic_tac_toe.model.PlayerType.valueOf((arg.toUpperCase()));
+                    playerType2 = PlayerType.valueOf((arg.toUpperCase()));
                 } else {
                     consoleDataPrinter.printErrorMessage("not supported " + arg);
                 }

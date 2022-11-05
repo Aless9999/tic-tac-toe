@@ -3,8 +3,8 @@ package macnonline.tic_tac_toe.components.swing;
 import macnonline.tic_tac_toe.components.DataPrinter;
 import macnonline.tic_tac_toe.components.GameOverHandler;
 import macnonline.tic_tac_toe.components.UserInputReader;
-import macnonline.tic_tac_toe.model.Cell;
-import macnonline.tic_tac_toe.model.GameTable;
+import macnonline.tic_tac_toe.model.game.Cell;
+import macnonline.tic_tac_toe.model.game.GameTable;
 
 import javax.swing.*;
 import java.awt.*;
