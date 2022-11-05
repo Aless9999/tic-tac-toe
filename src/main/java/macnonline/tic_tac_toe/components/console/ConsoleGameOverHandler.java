@@ -12,6 +12,6 @@ public class ConsoleGameOverHandler implements GameOverHandler {
 
     @Override
     public void gameOver() {
-        dataPrinter.printInfoMessagePrint("Game over!");
+        dataPrinter.printInfoMessagePrint("GAME OVER!");
     }
 }
