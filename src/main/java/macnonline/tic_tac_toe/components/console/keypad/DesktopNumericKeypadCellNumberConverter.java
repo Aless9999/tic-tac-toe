@@ -19,6 +19,8 @@ package macnonline.tic_tac_toe.components.console.keypad;
 import macnonline.tic_tac_toe.components.console.CellNumberConverter;
 import macnonline.tic_tac_toe.model.game.Cell;
 
+import static java.lang.String.format;
+
 /**
  * @author macnonline
  */
@@ -42,9 +44,8 @@ public class DesktopNumericKeypadCellNumberConverter implements CellNumberConver
             }
 
         }
-        return null;
+        throw new IllegalArgumentException(format("parameter must be between '1' and '9'! Current value is '%s'!", index));
     }
-
 
     @Override
     public char toNumber(final Cell cell) {
