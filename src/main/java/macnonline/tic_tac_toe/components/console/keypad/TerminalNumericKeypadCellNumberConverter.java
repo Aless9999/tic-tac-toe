@@ -19,6 +19,8 @@ package macnonline.tic_tac_toe.components.console.keypad;
 import macnonline.tic_tac_toe.components.console.CellNumberConverter;
 import macnonline.tic_tac_toe.model.game.Cell;
 
+import static java.lang.String.format;
+
 /**
  * @author macnonline
  */
@@ -33,13 +35,25 @@ public class TerminalNumericKeypadCellNumberConverter implements CellNumberConve
     @Override
     public Cell toCell(final int index) {
 
-
-        return new Cell((index - 1) / 3, (index - 1) % 3);
+        if (index >=1 && index < 9) {
+            return new Cell((index - 1) / 3, (index - 1) % 3);
+        } else {
+            throw new IllegalArgumentException(format("Must be index our 0 to 2. Current index '%s'", index));
+        }
     }
 
 
     @Override
     public char toNumber(final Cell cell) {
-        return mapping[cell.getRow()][cell.getCol()];
+        if (cell.getCol() >= 0 && cell.getCol() <= 2 && cell.getRow() >= 0 && cell.getRow() <= 2) {
+            return mapping[cell.getRow()][cell.getCol()];
+        }else{
+            throw new IllegalArgumentException(
+                    format(
+                            "Row and col indexes must be between 0 and 2! Current row is %s, current col is %s!",
+                            cell.getRow(), cell.getCol()
+                    ));
+        }
+
     }
 }
