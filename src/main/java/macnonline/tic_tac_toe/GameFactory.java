@@ -25,6 +25,7 @@ import macnonline.tic_tac_toe.components.console.ConsoleUserInputReader;
 import macnonline.tic_tac_toe.components.console.keypad.DesktopNumericKeypadCellNumberConverter;
 import macnonline.tic_tac_toe.components.strategy.MoveCentreTable;
 import macnonline.tic_tac_toe.components.strategy.RandomComputerMove;
+import macnonline.tic_tac_toe.components.strategy.WinNowComputerMoveStrategy;
 import macnonline.tic_tac_toe.components.swing.GameWindow;
 import macnonline.tic_tac_toe.model.config.PlayerType;
 import macnonline.tic_tac_toe.model.config.UserInterface;
@@ -53,6 +54,7 @@ public class GameFactory {
     public Game creat() {
         final ComputerMoveStrategy[] strategies= {
                 new MoveCentreTable(),
+                new WinNowComputerMoveStrategy(),
                 new RandomComputerMove()
 
         };
