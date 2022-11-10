@@ -22,6 +22,7 @@ import macnonline.tic_tac_toe.components.console.CellNumberConverter;
 import macnonline.tic_tac_toe.components.console.ConsoleDataPrinter;
 import macnonline.tic_tac_toe.components.console.ConsoleGameOverHandler;
 import macnonline.tic_tac_toe.components.console.ConsoleUserInputReader;
+import macnonline.tic_tac_toe.components.strategy.RandomComputerMove;
 import macnonline.tic_tac_toe.components.swing.GameWindow;
 import macnonline.tic_tac_toe.components.console.keypad.DesktopNumericKeypadCellNumberConverter;
 import macnonline.tic_tac_toe.model.config.PlayerType;
@@ -49,6 +50,9 @@ public class GameFactory {
     }
 
     public Game creat() {
+        final ComputerMoveStrategy[] strategies={
+                new RandomComputerMove()
+        };
         final GameOverHandler gameOverHandler;
         final DataPrinter dataPrinter;
         final UserInputReader userInputReader;
@@ -73,12 +77,12 @@ public class GameFactory {
         if (playerType1 == USER) {
             player1 = new Player(new UserMove(dataPrinter, userInputReader), X);
         } else {
-            player1 = new Player(new ComputerMove(), X);
+            player1 = new Player(new ComputerMove(strategies), X);
         }
         if (playerType2 == USER) {
             player2 = new Player(new UserMove(dataPrinter, userInputReader), O);
         } else {
-            player2 = new Player(new ComputerMove(), O);
+            player2 = new Player(new ComputerMove(strategies), O);
         }
 
 

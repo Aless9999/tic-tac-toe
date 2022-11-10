@@ -16,7 +16,7 @@ public class ConsoleDataPrinter implements DataPrinter {
 
     @Override
     public void printInstruction() {
-        printInfoMessagePrint("Use the following mapping table to specify a cell using numbers from 1 to 9:"
+        printInfoMessagePrintln("Use the following mapping table to specify a cell using numbers from 1 to 9:"
         );
         print((i, j) -> String.valueOf(cellNumberConverter.toNumber(new Cell(i, j))));
     }

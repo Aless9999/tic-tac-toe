@@ -45,13 +45,19 @@ public class CommandLineArgumentParser {
                 } else if (playerType2 == null) {
                     playerType2 = PlayerType.valueOf((arg.toUpperCase()));
                 } else {
-                    consoleDataPrinter.printErrorMessage("not supported " + arg);
+                    System.err.printf(
+                            "Invalid command line argument: '%s', because player types already set: player1Type='%s', player2Type='%s'!%n",
+                            arg, playerType1, playerType2
+                    );
                 }
             } else if (GUI.name().equalsIgnoreCase(arg) || CONSOLE.name().equalsIgnoreCase(arg)) {
                 userInterface = UserInterface.valueOf(arg.toUpperCase());
 
             } else {
-                consoleDataPrinter.printErrorMessage("not supported " + arg);
+                System.err.printf(
+                        "Invalid command line argument: '%s', because user interface already set: '%s'!%n",
+                        arg, userInterface
+                );
             }
         }
         if (userInterface == null) {

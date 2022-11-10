@@ -25,7 +25,7 @@ public class ConsoleUserInputReader implements UserInputReader {
         int index;
         while (true) {
 
-            dataPrinter.printInfoMessagePrint("Please insert number our 1 to 9");
+            dataPrinter.printInfoMessagePrintln("Please insert number our 1 to 9");
             index = new Scanner(System.in).nextInt();
 
             if (index <= 0 || index > 9) {
