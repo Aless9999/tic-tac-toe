@@ -22,17 +22,18 @@ import macnonline.tic_tac_toe.components.console.CellNumberConverter;
 import macnonline.tic_tac_toe.components.console.ConsoleDataPrinter;
 import macnonline.tic_tac_toe.components.console.ConsoleGameOverHandler;
 import macnonline.tic_tac_toe.components.console.ConsoleUserInputReader;
+import macnonline.tic_tac_toe.components.console.keypad.DesktopNumericKeypadCellNumberConverter;
+import macnonline.tic_tac_toe.components.strategy.MoveCentreTable;
 import macnonline.tic_tac_toe.components.strategy.RandomComputerMove;
 import macnonline.tic_tac_toe.components.swing.GameWindow;
-import macnonline.tic_tac_toe.components.console.keypad.DesktopNumericKeypadCellNumberConverter;
 import macnonline.tic_tac_toe.model.config.PlayerType;
 import macnonline.tic_tac_toe.model.config.UserInterface;
 import macnonline.tic_tac_toe.model.game.Player;
 
+import static macnonline.tic_tac_toe.model.config.PlayerType.USER;
+import static macnonline.tic_tac_toe.model.config.UserInterface.GUI;
 import static macnonline.tic_tac_toe.model.game.Sign.O;
 import static macnonline.tic_tac_toe.model.game.Sign.X;
-import static macnonline.tic_tac_toe.model.config.UserInterface.GUI;
-import static macnonline.tic_tac_toe.model.config.PlayerType.USER;
 
 public class GameFactory {
     private final UserInterface userInterface;
@@ -50,8 +51,10 @@ public class GameFactory {
     }
 
     public Game creat() {
-        final ComputerMoveStrategy[] strategies={
+        final ComputerMoveStrategy[] strategies= {
+                new MoveCentreTable(),
                 new RandomComputerMove()
+
         };
         final GameOverHandler gameOverHandler;
         final DataPrinter dataPrinter;
