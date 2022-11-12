@@ -7,100 +7,74 @@ import macnonline.tic_tac_toe.model.game.Sign;
 
 public class WinNowComputerMoveStrategy implements ComputerMoveStrategy {
     @Override
-    public boolean tryToMakeMove(GameTable gameTable, Sign sign) {
-
-        return isMoveByDiagonalLeft(gameTable, sign) ||
-                isMoveByDiagonalRight(gameTable, sign) ||
-                isMoveByCol(gameTable, sign) ||
-                isMoveByRow(gameTable, sign);
+    public boolean tryToMakeMove(final GameTable gameTable, final Sign sign) {
+        return tryToMakeMoveByRows(gameTable, sign) ||
+                tryToMakeMoveByCols(gameTable, sign) ||
+                tryToMakeMoveByMainDiagonal(gameTable, sign) ||
+                tryToMakeMoveBySecondaryDiagonal(gameTable, sign);
     }
 
-
-    private boolean isMoveByRow(GameTable gameTable, Sign sign) {
-
+    private boolean tryToMakeMoveByRows(final GameTable gameTable, final Sign sign) {
         for (int i = 0; i < 3; i++) {
-            if (gameTable.getSign(new Cell(0, i)) == gameTable.getSign(new Cell(1, i)) &&
-                    gameTable.getSign(new Cell(1, i)) == sign) {
-                if (gameTable.isEmpty(new Cell(2, i))) {
-                    gameTable.setSign(new Cell(2, i), sign);
-                    return true;
-                }
-            } else if (gameTable.getSign(new Cell(0, i)) == gameTable.getSign(new Cell(2, i)) &&
-                    gameTable.getSign(new Cell(0, i)) == sign) {
-                if (gameTable.isEmpty(new Cell(1, i))) {
-                    gameTable.setSign(new Cell(1, i), sign);
-                    return true;
-
-                }
-            } else if (gameTable.getSign(new Cell(1, i)) == gameTable.getSign(new Cell(2, i)) &&
-                    gameTable.getSign(new Cell(1, i)) == sign) {
-                if (gameTable.isEmpty(new Cell(0, i))) {
-                    gameTable.setSign(new Cell(0, i), sign);
-                    return true;
-                }
+            if (tryToMakeMoveByConvert(gameTable, sign, (w, j) -> new Cell(w, j), i)) {
+                return true;
             }
+
         }
         return false;
     }
 
-    private boolean isMoveByCol(GameTable gameTable, Sign sign) {
-
+    private boolean tryToMakeMoveByCols(final GameTable gameTable, final Sign sign) {
         for (int i = 0; i < 3; i++) {
-            if (gameTable.getSign(new Cell(i, 0)) == gameTable.getSign(new Cell(i, 1))
-                    && gameTable.getSign(new Cell(i, 0)) == sign) {
-                if (gameTable.isEmpty(new Cell(i, 2))) {
-                    gameTable.setSign(new Cell(i, 2), sign);
-                    return true;
-                }
-            } else if (gameTable.getSign(new Cell(i, 1)) == gameTable.getSign(new Cell(i, 2))
-                    && gameTable.getSign(new Cell(i, 1)) == sign) {
-                if (gameTable.isEmpty(new Cell(i, 0))) {
-                    gameTable.setSign(new Cell(i, 0), sign);
-                    return true;
-                }
-            } else if (gameTable.getSign(new Cell(i, 0)) == gameTable.getSign(new Cell(i, 2))
-                    && gameTable.getSign(new Cell(i, 0)) == sign) {
-                if (gameTable.isEmpty(new Cell(i, 1))) {
-                    gameTable.setSign(new Cell(i, 1), sign);
-
-                    return true;
-
-                }
+            if (tryToMakeMoveByConvert(gameTable, sign, (w, j) -> new Cell(j, w), i)) {
+                return true;
             }
         }
         return false;
     }
 
-    private boolean isMoveByDiagonalRight(GameTable gameTable, Sign sign) {
-        if (gameTable.getSign(new Cell(2, 0)) == gameTable.getSign(new Cell(1, 1))) {
-            if (gameTable.isEmpty(new Cell(0, 2))) {
-                gameTable.setSign(new Cell(0, 2), sign);
-                return true;
-            } else if (gameTable.getSign(new Cell(0, 2)) == gameTable.getSign(new Cell(1, 1))) {
-                if (gameTable.isEmpty(new Cell(2, 0))) {
-                    gameTable.setSign(new Cell(2, 0), sign);
-                    return true;
-                }
-            }
+    private boolean tryToMakeMoveByMainDiagonal(final GameTable gameTable, final Sign sign) {
+        if (tryToMakeMoveByConvert(gameTable, sign, (w, j) -> new Cell(j, j), -1)) {
+            return true;
         }
         return false;
     }
 
-    private boolean isMoveByDiagonalLeft(GameTable gameTable, Sign sign) {
-        if (gameTable.getSign(new Cell(0, 0)) == gameTable.getSign(new Cell(1, 1))) {
-            if (gameTable.isEmpty(new Cell(2, 2))) {
-                gameTable.setSign(new Cell(2, 2), sign);
-                return true;
-            }
-        } else if (gameTable.getSign(new Cell(2, 2)) == gameTable.getSign(new Cell(1, 1))) {
-            if (gameTable.isEmpty(new Cell(0, 0))) {
-                gameTable.setSign(new Cell(0, 0), sign);
-                return true;
-
-            }
-
+    private boolean tryToMakeMoveBySecondaryDiagonal(final GameTable gameTable, final Sign sign) {
+        if (tryToMakeMoveByConvert(gameTable, sign, (w, j) -> new Cell(j, 2 - j), -1)) {
+            return true;
         }
         return false;
     }
+
+
+    @FunctionalInterface
+    private interface Lambda {
+        Cell getValue(int w, int j);
+    }
+
+    private boolean tryToMakeMoveByConvert(final GameTable gameTable, final Sign sign,
+                                           final Lambda lambda, final int i) {
+        int countEmptyCells = 0;
+        int countSignCells = 0;
+        Cell lastEmptyCell = null;
+        for (int j = 0; j < 3; j++) {
+            final Cell cell = lambda.getValue(i, j);
+            if (gameTable.isEmpty(cell)) {
+                lastEmptyCell = cell;
+                countEmptyCells++;
+            } else if (gameTable.getSign(cell) == sign) {
+                countSignCells++;
+            } else {
+                break;
+            }
+        }
+        if (countEmptyCells == 1 && countSignCells == 2) {
+            gameTable.setSign(lastEmptyCell, sign);
+            return true;
+        }
+        return false;
+    }
+
 }
 
