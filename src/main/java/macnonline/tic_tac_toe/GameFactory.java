@@ -23,11 +23,8 @@ import macnonline.tic_tac_toe.components.console.ConsoleDataPrinter;
 import macnonline.tic_tac_toe.components.console.ConsoleGameOverHandler;
 import macnonline.tic_tac_toe.components.console.ConsoleUserInputReader;
 import macnonline.tic_tac_toe.components.console.keypad.DesktopNumericKeypadCellNumberConverter;
-import macnonline.tic_tac_toe.components.strategy.MoveCentreTable;
-import macnonline.tic_tac_toe.components.strategy.PreventUserWin;
-import macnonline.tic_tac_toe.components.strategy.RandomComputerMove;
-import macnonline.tic_tac_toe.components.strategy.WinNowComputerMoveStrategy;
 import macnonline.tic_tac_toe.components.swing.GameWindow;
+import macnonline.tic_tac_toe.model.config.LevelGame;
 import macnonline.tic_tac_toe.model.config.PlayerType;
 import macnonline.tic_tac_toe.model.config.UserInterface;
 import macnonline.tic_tac_toe.model.game.Player;
@@ -38,45 +35,43 @@ import static macnonline.tic_tac_toe.model.game.Sign.O;
 import static macnonline.tic_tac_toe.model.game.Sign.X;
 
 public class GameFactory {
+    private final LevelGame levelGame;
     private final UserInterface userInterface;
     private final PlayerType playerType1;
     private final PlayerType playerType2;
 
     public GameFactory(String[] args) {
 
+
         final CommandLineArgumentParser.PlayerTypes playerTypes =
                 new CommandLineArgumentParser(args).parse();
 
+        this.levelGame = playerTypes.getLevelGame();
         this.userInterface = playerTypes.getUserInterface();
         this.playerType1 = playerTypes.getPlayerType1();
         this.playerType2 = playerTypes.getPlayerType2();
     }
 
-    public Game creat() {
-        final ComputerMoveStrategy[] strategies= {
-                new WinNowComputerMoveStrategy(),
-                new PreventUserWin(),
-                new MoveCentreTable(),
-                new RandomComputerMove()
+    public Game create() {
 
-        };
         final GameOverHandler gameOverHandler;
         final DataPrinter dataPrinter;
         final UserInputReader userInputReader;
 
-        if(userInterface==GUI){
+
+        if (userInterface == GUI) {
             final GameWindow gameWindow = new GameWindow();
             dataPrinter = gameWindow;
             userInputReader = gameWindow;
             gameOverHandler = gameWindow;
-        }else{
-        final CellNumberConverter cellNumberConverter =
-                new DesktopNumericKeypadCellNumberConverter();
-        dataPrinter =
-                new ConsoleDataPrinter(cellNumberConverter);
-        userInputReader =
-                new ConsoleUserInputReader(dataPrinter,cellNumberConverter);
-        gameOverHandler = new ConsoleGameOverHandler(dataPrinter);
+        } else {
+            final CellNumberConverter cellNumberConverter =
+                    new DesktopNumericKeypadCellNumberConverter();
+            dataPrinter =
+                    new ConsoleDataPrinter(cellNumberConverter);
+            userInputReader =
+                    new ConsoleUserInputReader(dataPrinter, cellNumberConverter);
+            gameOverHandler = new ConsoleGameOverHandler(dataPrinter);
 
         }
         final Player player1;
@@ -84,12 +79,12 @@ public class GameFactory {
         if (playerType1 == USER) {
             player1 = new Player(new UserMove(dataPrinter, userInputReader), X);
         } else {
-            player1 = new Player(new ComputerMove(strategies), X);
+            player1 = new Player(new ComputerMove(levelGame.getStrategies()), X);
         }
         if (playerType2 == USER) {
             player2 = new Player(new UserMove(dataPrinter, userInputReader), O);
         } else {
-            player2 = new Player(new ComputerMove(strategies), O);
+            player2 = new Player(new ComputerMove(levelGame.getStrategies()), O);
         }
 
 

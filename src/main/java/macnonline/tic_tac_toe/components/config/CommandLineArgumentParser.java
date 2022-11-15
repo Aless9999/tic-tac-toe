@@ -16,14 +16,16 @@
 
 package macnonline.tic_tac_toe.components.config;
 
-import macnonline.tic_tac_toe.model.config.UserInterface;
 import macnonline.tic_tac_toe.components.console.ConsoleDataPrinter;
+import macnonline.tic_tac_toe.model.config.LevelGame;
 import macnonline.tic_tac_toe.model.config.PlayerType;
+import macnonline.tic_tac_toe.model.config.UserInterface;
 
-import static macnonline.tic_tac_toe.model.config.UserInterface.CONSOLE;
-import static macnonline.tic_tac_toe.model.config.UserInterface.GUI;
+import static macnonline.tic_tac_toe.model.config.LevelGame.*;
 import static macnonline.tic_tac_toe.model.config.PlayerType.COMPUTER;
 import static macnonline.tic_tac_toe.model.config.PlayerType.USER;
+import static macnonline.tic_tac_toe.model.config.UserInterface.CONSOLE;
+import static macnonline.tic_tac_toe.model.config.UserInterface.GUI;
 
 public class CommandLineArgumentParser {
     ConsoleDataPrinter consoleDataPrinter = new ConsoleDataPrinter();
@@ -38,6 +40,7 @@ public class CommandLineArgumentParser {
         PlayerType playerType1 = null;
         PlayerType playerType2 = null;
         UserInterface userInterface = null;
+        LevelGame levelGame = null;
         for (String arg : args) {
             if (USER.name().equalsIgnoreCase(arg) || COMPUTER.name().equalsIgnoreCase(arg)) {
                 if (playerType1 == null) {
@@ -53,6 +56,10 @@ public class CommandLineArgumentParser {
             } else if (GUI.name().equalsIgnoreCase(arg) || CONSOLE.name().equalsIgnoreCase(arg)) {
                 userInterface = UserInterface.valueOf(arg.toUpperCase());
 
+            } else if (LEVEL1.name().equalsIgnoreCase(arg) || LEVEL2.name().equalsIgnoreCase(arg)
+                    || LEVEL3.name().equalsIgnoreCase(arg)) {
+                levelGame = LevelGame.valueOf(arg.toUpperCase());
+
             } else {
                 System.err.printf(
                         "Invalid command line argument: '%s', because user interface already set: '%s'!%n",
@@ -60,14 +67,17 @@ public class CommandLineArgumentParser {
                 );
             }
         }
+        if (levelGame == null) {
+            levelGame = LEVEL3;
+        }
         if (userInterface == null) {
             userInterface = CONSOLE;
         }
 
         if (playerType1 == null) {
-            return new PlayerTypes(USER, COMPUTER, userInterface);
+            return new PlayerTypes(USER, COMPUTER, userInterface, levelGame);
         } else {
-            return new PlayerTypes(playerType1, playerType2, userInterface);
+            return new PlayerTypes(playerType1, playerType2, userInterface, levelGame);
         }
     }
 
@@ -76,10 +86,13 @@ public class CommandLineArgumentParser {
         private final PlayerType playerType2;
         private final UserInterface userInterface;
 
-        public PlayerTypes(PlayerType playerType1, PlayerType playerType2, UserInterface userInterface) {
+        private final LevelGame levelGame;
+
+        public PlayerTypes(PlayerType playerType1, PlayerType playerType2, UserInterface userInterface, LevelGame levelGame) {
             this.playerType1 = playerType1;
             this.playerType2 = playerType2;
             this.userInterface = userInterface;
+            this.levelGame = levelGame;
         }
 
         public PlayerType getPlayerType1() {
@@ -93,6 +106,11 @@ public class CommandLineArgumentParser {
         public UserInterface getUserInterface() {
             return userInterface;
         }
+
+        public LevelGame getLevelGame() {
+            return levelGame;
+        }
     }
 }
+
 

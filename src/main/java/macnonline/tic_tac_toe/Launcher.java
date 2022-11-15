@@ -25,7 +25,7 @@ import macnonline.tic_tac_toe.components.Game;
 public final class Launcher {
     public static void main(String[] args) {
         GameFactory gameFactory = new GameFactory(args);
-        Game game = (gameFactory.creat());
+        Game game = (gameFactory.create());
 
 
         game.play();
